@@ -1,0 +1,14 @@
+<% @kids.each do |kid| %>
+	<div class="booyah-box col-xs-4 col-xs-offset-1">
+        <div class="avatar">
+        <%= image_tag kid.avatar, class: "img-responsive img-circle" if kid.avatar.present? %>
+        </div>
+		<h1><%= link_to kid.name, kid_path(kid) %></h1><br />
+		<i><%= kid.birthdate %></i><br /><br />
+		<p><%= kid.gender %></p>
+	  </div>
+<% end %>
+
+<br />
+
+

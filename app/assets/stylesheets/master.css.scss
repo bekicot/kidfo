@@ -1,0 +1,100 @@
+@import 'https://fonts.googleapis.com/css?family=Poiret+One';
+@import 'https://fonts.googleapis.com/css?family=Poppins';
+
+html,
+body
+{
+    width: 100%;
+    height: 100%;
+}
+
+.panel-heading, .panel-title, .panel-body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar.navbar-inverse {
+  border-radius: 0;
+  margin-bottom:0;
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vertical-center h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 2.5em;
+    font-weight: 100;
+}
+
+.homepage {
+  /* Ensure the html element always takes up the full height of the browser window */
+  /* The Magic */
+  background: url('/assets/bkg.jpg') no-repeat center center scroll;
+  display: table;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.navbar {
+  background-color:#C2F0FF;
+  background-image: none;
+  background-repeat: no-repeat;
+ }
+
+.brand {
+  display: inline;
+  width: auto;
+  height: 50px;
+  padding: 3px;
+}
+
+.brand .kidfo {
+  font-family: 'Poiret One', cursive;
+  font-size: 35px;
+  font-weight: 800;
+  color: #BDBDBD;
+  vertical-align: middle;
+}
+
+.booyah-box {
+  margin-top: 15px;
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  padding:10px;
+}
+
+
+.img-responsive, .avatar{
+  display: block;
+  width: 175px;
+  height: auto;
+}
+
+.hideOverflow
+{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    width:100%;
+    display:block;
+}
+
+.profileImage {
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    position: relative;
+}
+

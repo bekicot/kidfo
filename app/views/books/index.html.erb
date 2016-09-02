@@ -1,0 +1,39 @@
+<div class="booyah-box col-xs-4 col-xs-offset-2">
+	  <h3>Add A Book</h3>
+			<%= form_tag kid_books_path, :method => :get do |f| %>
+			<%= text_field_tag :title, params[:title] %>
+			<%= submit_tag "Search", :name => nil, :class=>"btn btn-primary"  %>
+		<% end %>
+</div>
+
+
+<% if @search.any? %>
+<div class="booyah-box col-xs-6 col-xs-offset-2">
+	<h3>Search Results</h3>
+
+	<% @search.each_with_index do |result, index| %>
+
+		<%= simple_form_for @book, :url => kid_books_path(@kid) do |f| %>
+
+				<%= f.hidden_field :title, value: result.title %>
+	  		    <%= f.hidden_field :authors, value: result.authors %>
+	    		<%= f.hidden_field :isbn, value: result.isbn %>
+	    		<%= f.hidden_field :description, value: result.description[0...350] if result.description %>
+	    		<%= f.hidden_field :image_link, value: result.image_link %>
+	  
+
+	    		<%= image_tag result.image_link(:zoom => 6), class: "img-responsive " if result.image_link.present? %><br />
+	    
+			    Title: <%= result.title %><br />
+			    Author: <%= result.authors %><br />
+			    ISBN: <%= result.isbn %><br />
+			    Description: <%= result.description[0...350]  if result.description %>...<br /><br />
+	    
+	    <%= f.submit '+Favorite Book', :class=> 'btn btn-primary' %><br /><br />
+	  
+		<% end %>
+
+	
+<% end %>
+</div>
+<% end %>

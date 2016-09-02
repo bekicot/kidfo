@@ -1,0 +1,53 @@
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+  <h1>Your Kid's Profile</h1>
+  <%= simple_form_for @kid do |f|  %>
+    <div class= "row">
+	  	<div class="col-xs-4">
+			<h2>General Info</h2>
+			 	<%= f.input :name %>
+				<%= f.input :birthdate, :label => 'Birth Date' %>
+				<%= f.input :gender, :as =>:select, :collection => Kid::GENDER %>
+				<%= f.file_field :avatar %>
+
+		</div>
+		<div class="col-xs-4">
+			<h3>Parents/Guardians</h3><br />
+				<%= f.input :parent1, :label => 'Parent/Guardian'  %>
+				<%= f.input :parent2, :label => 'Second Parent/Guardian' %>
+		</div>
+		<div class="col-xs-4">
+			<h3>Health and Insurance</h3><br />
+				<%= f.input :insuranceprovider, :label => 'Insurance Provider'  %>
+				<%= f.input :physicianname, :label => 'Physician Name' %>
+				<%= f.input :physicianphone, :label => 'Physician Phone' %>
+		</div>
+    </div>
+    <div class= "row">
+    	<div class="col-xs-4">
+			<h3>Favorites</h3><br />
+				<%= f.input :favfood, :label => 'Favorite Food(s)' %>
+				<%= f.input :favdrink, :label => 'Favorite Drink(s)'  %>
+				<%= f.input :favtoys, :label => 'Favorite Toy(s)'  %>
+				<%= f.input :favactivities, :label => 'Favorite Activity(s)'  %>
+				<%= f.input :favmusic, :label => 'Favorite Music'  %>
+		</div>
+		<div class="col-xs-4">
+			<h3>Sleep</h3><br />
+				<%= f.input :bedtime, :as => :time, :minute_step => 15 , default: Time.parse("7:30")%>
+				<%= f.input :sleepdetails, :label => 'Sleep Routine'  %>
+		</div>
+		<div class="col-xs-4">
+			<h3>No-Nos</h3><br />
+			<%= f.input :allergies %>
+			<%= f.input :nonos, :label => 'Please Avoid'  %><br />
+			<h3>Chores</h3><br />
+			<%= f.input :chores %>
+			<br /><br />
+			<%= f.submit 'Create', :class=>"btn btn-primary" %>
+		</div>
+	</div>
+
+ <% end %>
+
+</div> 
+
