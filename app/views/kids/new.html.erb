@@ -23,20 +23,12 @@
 		</div>
     </div>
     <div class= "row">
-    	<div class="col-xs-4">
-			<h3>Favorites</h3><br />
-				<%= f.input :favfood, :label => 'Favorite Food(s)' %>
-				<%= f.input :favdrink, :label => 'Favorite Drink(s)'  %>
-				<%= f.input :favtoys, :label => 'Favorite Toy(s)'  %>
-				<%= f.input :favactivities, :label => 'Favorite Activity(s)'  %>
-				<%= f.input :favmusic, :label => 'Favorite Music'  %>
-		</div>
-		<div class="col-xs-4">
+		<div class="col-xs-6">
 			<h3>Sleep</h3><br />
 				<%= f.input :bedtime, :as => :time, :minute_step => 15 , default: Time.parse("7:30")%>
-				<%= f.input :sleepdetails, :label => 'Sleep Routine'  %>
+				<%= f.input :sleeproutine, :label => 'Sleep Routine'  %>
 		</div>
-		<div class="col-xs-4">
+		<div class="col-xs-6">
 			<h3>No-Nos</h3><br />
 			<%= f.input :allergies %>
 			<%= f.input :nonos, :label => 'Please Avoid'  %><br />

@@ -2,19 +2,13 @@ class CreateKids < ActiveRecord::Migration
   def change
     create_table :kids do |t|
 
+      t.string :name
       t.date :birthdate
       t.string :gender
       t.string :insuranceprovider
 
-      t.string :favfood
-      t.string :favdrink
-      t.string :favbooks
-      t.string :favmovies
-      t.string :favtoys
-      t.string :favactivities
-      t.string :favmusic
-
       t.string :bedtime
+      t.text :sleeproutine
 
       t.string :allergies
 

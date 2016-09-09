@@ -1,0 +1,40 @@
+<div class="booyah-box col-xs-4 col-xs-offset-2">
+	  <h3>Add A Movie</h3>
+			<%= form_tag new_kid_movie_path, :method => :get do |f| %>
+			<%= text_field_tag :title, params[:title] %>
+			<%= submit_tag "Search", :name => nil, :class=>"btn btn-primary"  %>
+		<% end %>
+</div>
+
+<% if @moviesearch.any? %>
+<div class="booyah-box col-xs-6 col-xs-offset-2">
+
+	<h3>Search Results</h3>
+
+	<% @moviesearch.each_with_index do |result, index| %>
+
+	  <%= simple_form_for @movie, :url => kid_movies_path(@kid) do |f| %>
+	   <% @formtype = 'movie' %>
+	   <%= image_tag result.poster, class: "img-responsive " if result.poster.present? %><br />
+
+	    Title: <%= result.title %><br />
+	    Cast: <%= result.cast_characters[0..5] %><br />
+	    Company: <%= result.company %><br />
+	    Rating: <%= result.mpaa_rating %><br />
+	    Trailer: <%=h auto_link(result.trailer_url) if result.trailer_url %><br /><br />
+	    <br /><br />
+	    
+	    <%= f.hidden_field :title, value: result.title %>
+	    <%= f.hidden_field :cast_characters[0..5], value: result.cast_characters[0..5] %>
+	    <%= f.hidden_field :company, value: result.company %>
+	    <%= f.hidden_field :mpaa_rating, value: result.mpaa_rating %>
+	    <%= f.hidden_field :trailer_url, value: result.trailer_url %>
+	    <%= f.hidden_field :poster, value: result.poster %>
+ 		<%= f.hidden_field :category, value: @formtype %>
+	    <%= f.submit '+Favorite Movie', :class=> 'btn btn-primary' %><br /><br />
+	  
+	    <hr><br />
+	  <% end %>
+	<% end %>
+</div>
+<% end %>

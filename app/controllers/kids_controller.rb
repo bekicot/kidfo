@@ -3,6 +3,7 @@ class KidsController < ApplicationController
 
 	def index
 		@kids = current_user.kids.all
+
 	end
 
 	def new
@@ -20,6 +21,8 @@ class KidsController < ApplicationController
 
 	def show
 		@kid = Kid.find(params[:id])
+		@favorites = @kid.favorites.all
+		@favorite = Favorite.new
 	end
 
 	def edit
@@ -56,7 +59,7 @@ class KidsController < ApplicationController
 	private
 
 	def kid_params
-		params.require(:kid).permit(:name, :birthdate,:gender, :avatar, :insuranceprovider,:favfood,:favdrink,:favbooks,:favmovies,:favtoys,:favactivities,:favmusic,:bedtime, :sleepdetails, :allergies,:physicianname,:physicianphone,:parent1,:parent2,:chores,:nonos)
+		params.require(:kid).permit(:name, :birthdate,:gender, :avatar, :insuranceprovider,:bedtime, :sleeproutine, :allergies,:physicianname,:physicianphone,:parent1,:parent2,:chores,:nonos)
 	end
 
 end

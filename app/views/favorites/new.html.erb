@@ -1,6 +1,6 @@
 <div class="booyah-box col-xs-4 col-xs-offset-2">
 	  <h3>Add A Book</h3>
-			<%= form_tag new_kid_book_path, :method => :get do |f| %>
+			<%= form_tag new_kid_favorite_path, :method => :get do |f| %>
 			<%= text_field_tag :name, params[:name] %>
 			<%= submit_tag "Search", :name => nil, :class=>"btn btn-primary"  %>
 		<% end %>
@@ -13,7 +13,7 @@
 
 	<% @booksearch.each_with_index do |result, index| %>
 
-		<%= simple_form_for @favorite, :url => kid_books_path(@kid) do |f| %>
+		<%= simple_form_for @favorite, :url => kid_favorites_path(@kid) do |f| %>
 				<%  @formtype = 'book' %>
 				<%= f.hidden_field :name, value: result.title %>
 	  		  	<%= f.hidden_field :book_isbn, value: result.isbn %>

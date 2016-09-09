@@ -11,42 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901140334) do
+ActiveRecord::Schema.define(version: 20160907000427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "books", force: :cascade do |t|
-    t.string   "authors"
-    t.string   "isbn"
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "kid_id"
+    t.string   "category"
+    t.string   "name"
     t.string   "description"
     t.string   "image_link"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "kid_id"
-    t.string   "title"
-  end
-
-  add_index "books", ["kid_id"], name: "index_books_on_kid_id", using: :btree
-
-  create_table "friendships", force: :cascade do |t|
-    t.integer  "kid_id"
-    t.integer  "friend_id"
-    t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "book_isbn"
+    t.string   "movie_cast"
+    t.string   "movie_trailer_url"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "kids", force: :cascade do |t|
+    t.string   "name"
     t.date     "birthdate"
     t.string   "gender"
     t.string   "insuranceprovider"
-    t.string   "favfood"
-    t.string   "favdrink"
-    t.string   "favtoys"
-    t.string   "favactivities"
-    t.string   "favmusic"
     t.time     "bedtime"
+    t.text     "sleeproutine"
     t.string   "allergies"
     t.string   "physicianname"
     t.string   "physicianphone"
@@ -56,43 +45,11 @@ ActiveRecord::Schema.define(version: 20160901140334) do
     t.string   "nonos"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.string   "name"
     t.integer  "user_id"
     t.string   "avatar"
-    t.text     "sleepdetails"
   end
 
   add_index "kids", ["user_id"], name: "index_kids_on_user_id", using: :btree
-
-  create_table "models", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  add_index "models", ["email"], name: "index_models_on_email", unique: true, using: :btree
-  add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true, using: :btree
-
-  create_table "movies", force: :cascade do |t|
-    t.string   "title"
-    t.string   "cast_characters"
-    t.string   "company"
-    t.string   "trailer_url"
-    t.string   "poster"
-    t.string   "mpaa_rating"
-    t.integer  "kid_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

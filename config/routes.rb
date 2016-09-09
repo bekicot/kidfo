@@ -7,16 +7,18 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   resources :kids do
+    resources :favorites
+    resources :movies do
+        collection { post :search, to: 'movies#index' }
+    end
     resources :books do
       collection { post :search, to: 'books#index' }
     end
-    resources :movies do
-      collection { post :search, to: 'movies#index' }
-    end
+    resources :foods, :drinks
   end
-  
+
  
-   
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

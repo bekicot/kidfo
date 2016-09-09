@@ -1,4 +1,4 @@
 class Movie < ActiveRecord::Base
-	belongs_to :kid
+	belongs_to :favorite
 
 end
