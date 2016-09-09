@@ -16,7 +16,9 @@
 				<br />
 				<h3>Parent/Guardians</h3><br />
 				 <%= @kid.parent1 %><br />
+				 <%= @kid.parent1_phone %><br />
 				 <%= @kid.parent2 %><br />
+				 <%= @kid.parent2_phone %><br />
 				<br />
 			<div class="pull-right">
 			<% if current_user && current_user == @kid.user %>
@@ -35,6 +37,8 @@
 				  </div>
 				  <div class="panel-body">
 				   Insurance Provider: <%= @kid.insuranceprovider %><br />
+				   Enrollee ID: <%= @kid.health_ins_enrollee_id %><br />
+				   Group #: <%= @kid.health_ins_group_num %><br /><br />
 				   Physician Name: <%= @kid.physicianname %><br />
 				   Physician Phone:<%= @kid.physicianphone %><br />
 					<br />
@@ -47,8 +51,10 @@
 			    <h3 class="panel-title">Emergency Contacts</h3>
 			  </div>
 				  <div class="panel-body">
-				   Contact 1:<%= @kid.parent1 %><br />
-				   Contact 2:<%= @kid.parent2 %><br />
+				   <%= @kid.emerg_contact_1 %><br />
+				   <%= @kid.emerg_contact_1_phone %><br /><br />
+				   <%= @kid.emerg_contact_2 %><br />
+				   <%= @kid.emerg_contact_2_phone %><br /><br />
 					<br />
 				  </div>
 			</div>

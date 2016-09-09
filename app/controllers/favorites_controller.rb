@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+    before_action :authenticate_user!, :only =>[:new, :create, :show, :edit, :update, :destroy]
+
 
   	def index
          @kid = Kid.find(params[:kid_id])

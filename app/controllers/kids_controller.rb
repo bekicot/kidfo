@@ -1,5 +1,5 @@
 class KidsController < ApplicationController
-	before_action :authenticate_user!, :only =>[:new, :create, :edit, :update, :destroy]
+	before_action :authenticate_user!, :only =>[:new, :create, :show, :edit, :update, :destroy]
 
 	def index
 		@kids = current_user.kids.all
@@ -59,7 +59,7 @@ class KidsController < ApplicationController
 	private
 
 	def kid_params
-		params.require(:kid).permit(:name, :birthdate,:gender, :avatar, :insuranceprovider,:bedtime, :sleeproutine, :allergies,:physicianname,:physicianphone,:parent1,:parent2,:chores,:nonos)
+		params.require(:kid).permit(:name, :birthdate,:gender, :avatar, :insuranceprovider,:health_ins_enrollee_id, :health_ins_group_num, :bedtime, :sleeproutine, :allergies,:physicianname,:physicianphone,:parent1,:parent2, :parent1_phone, :parent2_phone, :emerg_contact_1, :emerg_contact_1_phone, :emerg_contact_2, :emerg_contact_2_phone, :chores,:nonos)
 	end
 
 end

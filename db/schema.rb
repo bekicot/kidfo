@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907000427) do
+ActiveRecord::Schema.define(version: 20160909125609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,18 @@ ActiveRecord::Schema.define(version: 20160907000427) do
     t.string   "parent2"
     t.string   "chores"
     t.string   "nonos"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
     t.string   "avatar"
+    t.string   "health_ins_enrollee_id"
+    t.string   "health_ins_group_num"
+    t.string   "parent1_phone"
+    t.string   "parent2_phone"
+    t.string   "emerg_contact_1"
+    t.string   "emerg_contact_1_phone"
+    t.string   "emerg_contact_2"
+    t.string   "emerg_contact_2_phone"
   end
 
   add_index "kids", ["user_id"], name: "index_kids_on_user_id", using: :btree

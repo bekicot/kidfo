@@ -13,29 +13,40 @@
 		<div class="col-xs-4">
 			<h3>Parents/Guardians</h3><br />
 				<%= f.input :parent1, :label => 'Parent/Guardian'  %>
+				<%= f.input :parent1_phone, :label => 'Phone'  %><br />
 				<%= f.input :parent2, :label => 'Second Parent/Guardian' %>
+				<%= f.input :parent2_phone, :label => 'Phone'  %>
 		</div>
 		<div class="col-xs-4">
 			<h3>Health and Insurance</h3><br />
 				<%= f.input :insuranceprovider, :label => 'Insurance Provider'  %>
+				<%= f.input :health_ins_enrollee_id, :label => 'Enrollee ID'  %>
+				<%= f.input :health_ins_group_num, :label => 'Group #'  %>
 				<%= f.input :physicianname, :label => 'Physician Name' %>
 				<%= f.input :physicianphone, :label => 'Physician Phone' %>
 		</div>
     </div>
     <div class= "row">
-		<div class="col-xs-6">
+		<div class="col-xs-4">
 			<h3>Sleep</h3><br />
 				<%= f.input :bedtime, :as => :time, :minute_step => 15 , default: Time.parse("7:30")%>
 				<%= f.input :sleeproutine, :label => 'Sleep Routine'  %>
 		</div>
-		<div class="col-xs-6">
+		<div class="col-xs-4">
 			<h3>No-Nos</h3><br />
 			<%= f.input :allergies %>
 			<%= f.input :nonos, :label => 'Please Avoid'  %><br />
 			<h3>Chores</h3><br />
 			<%= f.input :chores %>
 			<br /><br />
-			<%= f.submit 'Create', :class=>"btn btn-primary" %>
+			<%= f.submit 'Update', :class=>"btn btn-primary" %>
+		</div>
+		<div class="col-xs-4">
+			<h3>Emergency Contacts</h3><br />
+				<%= f.input :emerg_contact_1, :label => 'Emergency Contact 1'  %>
+				<%= f.input :emerg_contact_1_phone, :label => 'Phone'  %><br />
+				<%= f.input :emerg_contact_2, :label => 'Second Emergency Contact' %>
+				<%= f.input :emerg_contact_2_phone, :label => 'Phone'  %>
 		</div>
 	</div>
 
