@@ -157,7 +157,7 @@
 <!-- Favorites Section: Books and Movies -->
 <div class="row">
 	<div class="col-xs-12">
-		<div class="col-xs-6">
+		<div class="col-xs-12">
 			<div class="panel panel-default">
 				  <div class="panel-heading">
 				    <h3 class="panel-title">Favorite Books</h3>
@@ -166,7 +166,7 @@
 				  <% if @favorites.any? %>
 				   <%	@favorites.each do |book, index| %>
 				   		<% if book.category == 'book' %>
-						<div class="col-xs-6 col-sm-6 hideOverflow">
+						<div class="col-xs-4 col-sm-4 hideOverflow">
 							<%= image_tag book.image_link, class: "img-responsive " if book.image_link.present? %><br /><br />
 							<b>Title:</b> <%= book.name %><br />
 			    			<b>Description:</b> <%= book.description %><br />
@@ -187,7 +187,7 @@
 			</div>
 		</div>
 
-		<div class="col-xs-6">
+		<div class="col-xs-12">
 			<div class="panel panel-default">
 				  <div class="panel-heading">
 				    <h3 class="panel-title">Favorite Movies</h3>
@@ -196,7 +196,7 @@
 				  <% if @favorites.any? %>
 				   <%	@favorites.each do |movie, index| %>
 				   		<% if movie.category == 'movie' %>
-						<div class="col-xs-6 col-sm-6 hideOverflow">
+						<div class="col-xs-4 col-sm-4 hideOverflow">
 							<%= image_tag movie.image_link, class: "img-responsive " if movie.image_link.present? %><br /><br />
 							<b>Title:</b> <%= movie.name %><br />
 			    			<b>Cast:</b> <%= movie.movie_cast %><br />

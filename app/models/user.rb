@@ -6,5 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :kids
+  #has_many :relationships
+  #has_many :users, :through => :relationships
+
 
 end
