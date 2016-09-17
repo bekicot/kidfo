@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     resources :foods, :drinks
   end
 
+  resources :invite do
+    collection { post :search, to: 'invite#index' }
+  end
+
  
   
   # Example of regular route:
