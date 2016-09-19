@@ -2,8 +2,8 @@
 	<%= search_form_for @q, url: search_invite_index_path, method: :post do |f| %>
 		<div class="field">
     		
-			<%= f.label :email, "Email" %>
-			<%= f.search_field :email %>
+			<%= f.label :first_name, "Name" %>
+			<%= f.search_field :first_name %>
 
 		</div><br />
 		<div class="actions"><%= f.submit "Search" %></div>

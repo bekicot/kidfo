@@ -6,7 +6,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name, required: true, autofocus: true %><br />
+    <%= f.input :last_name, required: true, autofocus: true %><br />
     <%= f.input :email, required: true, autofocus: true %><br />
+    <%= f.input :phone_number, required: false, autofocus: true %><br />
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %><br />
     <%= f.input :password_confirmation, required: true %>
   </div>
