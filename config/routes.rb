@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     collection { post :search, to: 'invite#index' }
   end
 
-  devise_for :users, :controllers => { registrations: 'registrator' }
+  #devise_for :users, :controllers => { registrations: 'registrator' }
 
  
   
