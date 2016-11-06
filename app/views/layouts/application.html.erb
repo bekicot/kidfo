@@ -28,7 +28,7 @@
        	<% if user_signed_in? %>
           <li><%= link_to 'My Kids', kids_path %></li>
           <li><%= link_to 'Add Kid', new_kid_path %></li>
-          <li><%= link_to 'My Profile', root_path %></li>
+          <li><%= link_to 'My Family', user_path(current_user) %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
           <% end %>
         

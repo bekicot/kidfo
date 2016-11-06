@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FriendTest < ActiveSupport::TestCase
+class FamiliesControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

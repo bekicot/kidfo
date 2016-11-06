@@ -11,12 +11,14 @@ class KidsController < ApplicationController
 	end
 
 	def create
-		@kid = current_user.kids.create(kid_params)
+		@kid = Kid.new(kid_params)
+		@kid.current_user.build
 		if @kid.valid?
 			redirect_to kid_path(@kid)
 		else
 			render :new, :status => :unprocessable_entity
 		end
+
 	end
 
 	def show

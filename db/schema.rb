@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917113518) do
+ActiveRecord::Schema.define(version: 20161103103915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "families", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "kid_id"
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "kid_id"
@@ -60,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160917113518) do
     t.string   "emerg_contact_1_phone"
     t.string   "emerg_contact_2"
     t.string   "emerg_contact_2_phone"
+    t.integer  "family_id"
   end
 
   add_index "kids", ["user_id"], name: "index_kids_on_user_id", using: :btree
@@ -88,6 +97,8 @@ ActiveRecord::Schema.define(version: 20160917113518) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
+    t.string   "avatar"
+    t.integer  "family_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

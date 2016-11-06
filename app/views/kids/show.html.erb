@@ -1,14 +1,14 @@
 
 <div class="row">
 <div class="col-xs-2 col-xs-offset-1  text-vertical-center">
-		<h4>Profile</h4>
+		<h4>Kid</h4>
 		<div class="img-responsive">
 				<%= image_tag @kid.avatar, class: "img-circle avatar" if @kid.avatar.present? %>
 		 </div><br />
 			   <h4><%= @kid.name %></h4>
 				<i><%= @kid.birthdate %></i><br /><br />
 			<div class="pull-right">
-			<% if current_user && current_user == @kid.user %>
+			<% if current_user && current_user == @kid.user_id %>
 			<%= link_to 'Edit', edit_kid_path(@kid), :class => 'btn btn-default btn-sm' %>
 	        <% end %>
 		    </div>
@@ -178,7 +178,7 @@
 				 <br /><br />
 				 </div>
 				
-				 <% if current_user && current_user == @kid.user %>
+				 <% if current_user && current_user == @kid.user_id %>
 				  <div class="panel-footer">
 				 	<%= link_to 'Add Favorite Book', new_kid_book_path(@kid), :class => 'btn btn-primary' %>
 				 </div>
@@ -209,7 +209,7 @@
 				 <br /><br />
 				 </div>
 				 
-				 <% if current_user && current_user == @kid.user %>
+				 <% if current_user && current_user == @kid.user_id %>
 				 <div class="panel-footer">
 				 	<%= link_to 'Add Favorite Movie', new_kid_movie_path(@kid), :class => 'btn btn-primary' %>
 				 </div>
