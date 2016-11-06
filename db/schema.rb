@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103103915) do
+ActiveRecord::Schema.define(version: 20161106222944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "families", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "kid_id"
-  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "kid_id"
@@ -35,11 +27,6 @@ ActiveRecord::Schema.define(version: 20161103103915) do
     t.string   "movie_trailer_url"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-  end
-
-  create_table "friends", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "kids", force: :cascade do |t|
@@ -56,9 +43,9 @@ ActiveRecord::Schema.define(version: 20161103103915) do
     t.string   "parent2"
     t.string   "chores"
     t.string   "nonos"
+    t.integer  "family_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "user_id"
     t.string   "avatar"
     t.string   "health_ins_enrollee_id"
     t.string   "health_ins_group_num"
@@ -68,20 +55,14 @@ ActiveRecord::Schema.define(version: 20161103103915) do
     t.string   "emerg_contact_1_phone"
     t.string   "emerg_contact_2"
     t.string   "emerg_contact_2_phone"
-    t.integer  "family_id"
+    t.integer  "user_id"
   end
 
-  add_index "kids", ["user_id"], name: "index_kids_on_user_id", using: :btree
-
-  create_table "relationships", force: :cascade do |t|
-    t.string   "nature"
-    t.integer  "person_id"
-    t.datetime "created_at", null: false
-    t.integer  "kid_id"
-    t.datetime "updated_at", null: false
-  end
+  add_index "kids", ["family_id"], name: "index_kids_on_family_id", using: :btree
 
   create_table "users", force: :cascade do |t|
+    t.integer  "role"
+    t.string   "name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -98,7 +79,6 @@ ActiveRecord::Schema.define(version: 20161103103915) do
     t.string   "last_name"
     t.string   "phone_number"
     t.string   "avatar"
-    t.integer  "family_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

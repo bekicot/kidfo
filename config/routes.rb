@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: :show
+
+  resources :families
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

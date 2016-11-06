@@ -178,11 +178,9 @@
 				 <br /><br />
 				 </div>
 				
-				 <% if current_user && current_user == @kid.user_id %>
 				  <div class="panel-footer">
 				 	<%= link_to 'Add Favorite Book', new_kid_book_path(@kid), :class => 'btn btn-primary' %>
 				 </div>
-				<% end %>
 				
 			</div>
 		</div>
@@ -209,11 +207,9 @@
 				 <br /><br />
 				 </div>
 				 
-				 <% if current_user && current_user == @kid.user_id %>
 				 <div class="panel-footer">
 				 	<%= link_to 'Add Favorite Movie', new_kid_movie_path(@kid), :class => 'btn btn-primary' %>
 				 </div>
-				<% end %>
 				
 			</div>
 		</div>

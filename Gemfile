@@ -37,6 +37,8 @@ gem 'rails_autolink'
 # Search
 gem 'ransack'
 gem 'rails_12factor', group: :productiongit
+gem 'activeadmin', github: 'activeadmin'
+gem 'cancancan', '~> 1.10'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

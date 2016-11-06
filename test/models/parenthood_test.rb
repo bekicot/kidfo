@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class InviteControllerTest < ActionController::TestCase
+class ParenthoodTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

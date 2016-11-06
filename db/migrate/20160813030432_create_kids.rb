@@ -21,8 +21,10 @@ class CreateKids < ActiveRecord::Migration
       t.string :chores
       t.string :nonos
 
+      t.integer :family_id
 
       t.timestamps null: false
     end
+    add_index :kids, :family_id
   end
 end

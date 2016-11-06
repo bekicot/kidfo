@@ -11,8 +11,7 @@ class KidsController < ApplicationController
 	end
 
 	def create
-		@kid = Kid.new(kid_params)
-		@kid.current_user.build
+		@kid = current_user.kids.create(kid_params)
 		if @kid.valid?
 			redirect_to kid_path(@kid)
 		else
@@ -61,7 +60,7 @@ class KidsController < ApplicationController
 	private
 
 	def kid_params
-		params.require(:kid).permit(:name, :birthdate,:gender, :avatar, :insuranceprovider,:health_ins_enrollee_id, :health_ins_group_num, :bedtime, :sleeproutine, :allergies,:physicianname,:physicianphone,:parent1,:parent2, :parent1_phone, :parent2_phone, :emerg_contact_1, :emerg_contact_1_phone, :emerg_contact_2, :emerg_contact_2_phone, :chores,:nonos)
+		params.require(:kid).permit(:user_id, :name, :birthdate,:gender, :avatar, :insuranceprovider,:health_ins_enrollee_id, :health_ins_group_num, :bedtime, :sleeproutine, :allergies,:physicianname,:physicianphone,:parent1,:parent2, :parent1_phone, :parent2_phone, :emerg_contact_1, :emerg_contact_1_phone, :emerg_contact_2, :emerg_contact_2_phone, :chores,:nonos)
 	end
 
 end
