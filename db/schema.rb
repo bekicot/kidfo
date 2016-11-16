@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106222944) do
+ActiveRecord::Schema.define(version: 20161116034013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "families", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "kid_id"
@@ -29,6 +35,22 @@ ActiveRecord::Schema.define(version: 20161106222944) do
     t.datetime "updated_at",        null: false
   end
 
+  create_table "invites", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "status"
+    t.string   "code"
+    t.integer  "family_id"
+    t.integer  "user_id"
+    t.integer  "invite_kind"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "invites", ["code"], name: "index_invites_on_code", using: :btree
+  add_index "invites", ["family_id"], name: "index_invites_on_family_id", using: :btree
+  add_index "invites", ["status"], name: "index_invites_on_status", using: :btree
+  add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
+
   create_table "kids", force: :cascade do |t|
     t.string   "name"
     t.date     "birthdate"
@@ -41,8 +63,8 @@ ActiveRecord::Schema.define(version: 20161106222944) do
     t.string   "physicianphone"
     t.string   "parent1"
     t.string   "parent2"
-    t.string   "chores"
-    t.string   "nonos"
+    t.text     "chores"
+    t.text     "nonos"
     t.integer  "family_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -59,6 +81,16 @@ ActiveRecord::Schema.define(version: 20161106222944) do
   end
 
   add_index "kids", ["family_id"], name: "index_kids_on_family_id", using: :btree
+
+  create_table "parenthoods", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "family_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "parenthoods", ["family_id"], name: "index_parenthoods_on_family_id", using: :btree
+  add_index "parenthoods", ["user_id"], name: "index_parenthoods_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "role"

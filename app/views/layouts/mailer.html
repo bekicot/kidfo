@@ -1,0 +1,15 @@
+<html>
+<body>
+
+Hello,
+
+<% #{@invite.user.name} invites you to become #{@for_text} of team "#{@invite.team.name}". %>
+
+p Please click the link below to accept/reject the invite:
+
+<%= link_to "#{invite_url(@invite.code)}", invite_url(@invite.code) %>
+
+Thank you!
+
+Rider App
+   

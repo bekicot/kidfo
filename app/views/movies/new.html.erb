@@ -15,7 +15,7 @@
 
 	  <%= simple_form_for @favorite, :url => kid_movies_path(@kid) do |f| %>
 	   <% @formtype = 'movie' %>
-	   <%= image_tag result.poster, class: "img-responsive " if result.poster.present? %><br />
+	   <%= image_tag result.poster %><br />
 
 	    Title: <%= result.title %><br />
 	    Cast: <%= result.cast_characters[0..5] %><br />

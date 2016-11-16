@@ -3,8 +3,10 @@ class FamiliesController < ApplicationController
   load_and_authorize_resource param_method: :family_params
 
   def new
-    check_current_user_family
+    #check_current_user_family
     @family = Family.new
+    @family.kids.build
+
   end
 
   def create
@@ -12,9 +14,9 @@ class FamiliesController < ApplicationController
     @family = Family.new family_params
     parenthood = Parenthood.new family: @family, user: current_user
     if @family.save && parenthood.save
-      redirect_to root_path
-    else
-      render :new
+      
+      else
+        render :new, :status => :unprocessable_entity
     end
   end
 
@@ -33,8 +35,9 @@ class FamiliesController < ApplicationController
 
   private
   def family_params
-    params.require(:family).permit :name, kids_attributes: [:id, :name, :_destroy]
-  end
+    params.require(:family).permit :name, kids_attributes: [:id, :name, :avatar, :birthdate, :gender, :emerg_contact_1, :emerg_contact_1_phone,:emerg_contact_2, :emerg_contact_2_phone, :insuranceprovider, :health_ins_enrollee_id, :health_ins_group_num, :bedtime, :sleeproutine, :allergies, :physicianname, :physicianphone, :chores, :nonos, :_destroy]
+
+    end
 
   def check_current_user_family
     redirect_to root_path, notice: 'You already have a family!' if current_user.family

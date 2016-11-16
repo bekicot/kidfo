@@ -5,6 +5,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :kids
+  has_one :parenthood
+  has_one :family, through: :parenthood
+
+  # invites
+  has_many :invites
+
+  #for guardian only
+
+  enum role: {
+    parentuser: 1,
+    guardianuser: 2
+  }
   
+  validates :role, presence: true
 end

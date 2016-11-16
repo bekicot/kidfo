@@ -7,8 +7,8 @@ class InvitesController < ApplicationController
     @invite = current_user.invites.new
 
     case (@invite.invite_kind || params[:invite_kind])
-    when 'for_parent'
-      @invite.invite_kind = 'for_parent'
+    when 'for_spouse'
+      @invite.invite_kind = 'for_spouse'
     when 'for_guardian'
       @invite.invite_kind = 'for_guardian'
     else

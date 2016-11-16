@@ -2,8 +2,6 @@ class KidsController < ApplicationController
 	before_action :authenticate_user!, :only =>[:new, :create, :show, :edit, :update, :destroy]
 
 	def index
-		@kids = current_user.kids.all
-
 	end
 
 	def new
@@ -11,7 +9,7 @@ class KidsController < ApplicationController
 	end
 
 	def create
-		@kid = current_user.kids.create(kid_params)
+		@kid = current_user.family.kids.create(kid_params)
 		if @kid.valid?
 			redirect_to kid_path(@kid)
 		else
@@ -28,11 +26,6 @@ class KidsController < ApplicationController
 
 	def edit
 		@kid = Kid.find(params[:id])
-
-		if @kid.user != current_user
-			return render :text => 'This aint your Kid!', :status => :forbidden
-		end
-
 	end
 
 	def update
@@ -41,9 +34,6 @@ class KidsController < ApplicationController
 		#We should send the user back to the root page.
 		
 		@kid = Kid.find(params[:id])
-		if @kid.user != current_user
-			return render :text => 'This aint your Kid!', :status => :forbidden
-		end
 
 		@kid.update_attributes(kid_params)
 		

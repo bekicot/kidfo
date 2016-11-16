@@ -5,7 +5,7 @@ class Family < ActiveRecord::Base
   has_many :kids
   has_many :guardianship
   has_many :guardians, through: :guardianship
-  has_many :invites
+  
 
   validates :name, presence: true
 
@@ -15,7 +15,7 @@ class Family < ActiveRecord::Base
 
   alias_method :parents, :users
 
-  def may_invite_parent?
+  def may_invite_spouse?
     parents.count < 2
   end
 

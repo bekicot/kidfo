@@ -3,7 +3,7 @@ class InviteMailer < ApplicationMailer
   def send_invite invite
     @invite = invite
     @for_text = case invite.invite_kind
-      when 'for_parent'
+      when 'for_spouse'
         'parent'
       when 'for_guardian'
         'guardian'

@@ -1,0 +1,11 @@
+<% if @invite.pending? %>
+ 
+ You are invited to become #{@invite.for_parent? ? 'Parent' : 'Guardian'} of team #{@invite.family.name} 
+
+   <%= link_to 'Accept', accept_invite_path, class: 'btn btn-success', method: :post %>
+ 
+   <%= link_to 'Reject', reject_invite_path, class: 'btn btn-danger', method: :post %>
+
+This invite is already #{@invite.status} 
+
+<% end %>

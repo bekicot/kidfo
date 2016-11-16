@@ -1,0 +1,11 @@
+p Hello,
+
+p #{@invite.user.name} invites you to become #{@for_text} of team "#{@invite.family.name}".
+
+p Please click the link below to accept/reject the invite:
+
+p = link_to "#{invite_url(@invite.code)}", invite_url(@invite.code)
+
+p Thank you!
+
+p Kidfo App

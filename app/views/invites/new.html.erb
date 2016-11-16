@@ -1,0 +1,15 @@
+<% if @invite.for_spouse? %>
+Invite Spouse
+
+<% elsif @invite.for_guardian? %>
+
+Invite sponsor
+
+<% end %>
+
+<%= simple_form_for @invite  do |f| %>
+	<%= f.hidden_field :invite_kind %>
+	<%= f.input :email, :hint => 'email of spouse'  %>
+	<%= f.submit 'Send Invite', :class=>"btn btn-primary" %>
+
+<% end %>

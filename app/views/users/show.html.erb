@@ -1,37 +1,54 @@
 
 
 <div class="booyah-box col-xs-10 col-xs-offset-1">
+	<div class="special">
 		<div class="col xs-2">
-		<div class="img-responsive">
-				<%= image_tag @user.avatar, class: " avatar" if @user.avatar.present? %>
+		<div class="img-responsive rounded">
+				<%= image_tag @user.avatar, class: "avatar" if @user.avatar.present? %>
 		 </div>		
 		 </div><br />
 
 		<div class="col-xs-8">
 			<h2><%= @user.first_name %> <%= @user.last_name %></h2>
 			<h4><%= @user.email %></h4>
+			<h4><%= @user.role  %></h4>
+		
 			
 		</div>
+		<div class="col-xs-2">
+		   <% if @family.present? %>
+			<% if @family.may_invite_spouse? %>
+      		   <%= link_to 'Invite Spouse', new_invite_path(invite_kind: :for_spouse) %>
+    		<% end %>
+    		<%= link_to 'Invite sponsor', new_invite_path(invite_kind: :for_guardian) %>
+		   <% end %>
+		</div>
+
+
 
 		<div class="clear"></div>
-
-</div>
-
-<div class="booyah-box col-xs-5 col-xs-offset-1">
-	<h2 class="text-center">My Kids</h2>  <br /><br />
-	
-	<% @user.kids.each do |kid| %>
-	   <div class="col-xs-4">
-	   <div class="img-responsive">
-				<%= image_tag kid.avatar, class: "img-circle avatar" if kid.avatar.present? %>
-		 </div><br />
-	   <h2><%= link_to kid.name, kid_path(kid) %></h2><br />
-		</div>
-	<% end %>
-
+	</div>
 </div>
 
 <div class="booyah-box col-xs-4 col-xs-offset-1">
-	<h2 class="text-center">Family Favorites</h2>  <br /><br />
-	<%= @family %>
+	<h2 class="text-center">Kids</h2>  <br /><br />
+	<% if @user.parentuser? && @user.family == @family && @user.family.present? %>
+  		<% @family.kids.each do |kid| %>
+  		<div class="col-xs-6">
+  		 	<div class="img-responsive">
+				<%= image_tag kid.avatar, class: "img-circle avatar" if kid.avatar.present? %>
+		 	</div><br />
+		 	<%= link_to kid.name, kid_path(kid) %><br />
+  			</div>
+  		<% end %>
+
+  	<br /><br />
+    <% end %>
 </div>
+
+<div class="booyah-box col-xs-4 col-xs-offset-1">
+	<h2 class="text-center">Family Bucket List</h2>  <br /><br />
+	
+</div>
+
+

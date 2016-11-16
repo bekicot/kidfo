@@ -7,24 +7,39 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#index'
 
-  resources :kids do
-    resources :favorites
-    resources :movies do
-        collection { post :search, to: 'movies#index' }
-    end
-    resources :books do
-      collection { post :search, to: 'books#index' }
-    end
-    resources :foods, :drinks
-  end
+  #resources :kids do
+  #  resources :favorites
+  #  resources :movies do
+  #      collection { post :search, to: 'movies#index' }
+  #  end
+  #  resources :books do
+  #    collection { post :search, to: 'books#index' }
+  #  end
+  #  resources :foods, :drinks
+  #end
 
-  resources :invite do
-    collection { post :search, to: 'invite#index' }
+  resources :invites do
+    member do
+      post :accept, to: 'invites#accept', as: :accept
+      post :cancel, to: 'invites#cancel', as: :cancel
+      post :reject, to: 'invites#reject', as: :reject
+    end
   end
 
   resources :users, only: :show
 
   resources :families
+    resources :kids do
+      resources :favorites
+        resources :movies do
+         collection { post :search, to: 'movies#index' }
+      end
+      resources :books do
+         collection { post :search, to: 'books#index' }
+      end
+      resources :foods, :drinks
+  end
+  
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
