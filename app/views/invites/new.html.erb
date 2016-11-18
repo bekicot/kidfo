@@ -1,15 +1,17 @@
-<% if @invite.for_spouse? %>
-Invite Spouse
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+	<% if @invite.for_spouse? %>
+	Invite Spouse
 
-<% elsif @invite.for_guardian? %>
+	<% elsif @invite.for_sitter? %>
 
-Invite sponsor
+	Invite Sitter
 
-<% end %>
+	<% end %>
 
-<%= simple_form_for @invite  do |f| %>
-	<%= f.hidden_field :invite_kind %>
-	<%= f.input :email, :hint => 'email of spouse'  %>
-	<%= f.submit 'Send Invite', :class=>"btn btn-primary" %>
+	<%= simple_form_for @invite  do |f| %>
+		<%= f.hidden_field :invite_kind %>
+		<%= f.input :email, :hint => 'Email'  %>
+		<%= f.submit 'Send Invite', :class=>"btn btn-primary" %>
 
-<% end %>
+	<% end %>
+</div>

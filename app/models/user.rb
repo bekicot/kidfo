@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   enum role: {
     parentuser: 1,
-    guardianuser: 2
+    sitteruser: 2
   }
   
   validates :role, presence: true

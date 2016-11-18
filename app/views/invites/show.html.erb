@@ -1,11 +1,15 @@
-<% if @invite.pending? %>
- 
- You are invited to become #{@invite.for_parent? ? 'Parent' : 'Guardian'} of team #{@invite.family.name} 
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+	<% if @invite.pending? %>
+		 
+	You are invited to become a 
+		<% if @invite.for_spouse? %>Parent<% else %>Sitter<% end %> of the <%= @invite.family.name %> family.<br /><br />
 
-   <%= link_to 'Accept', accept_invite_path, class: 'btn btn-success', method: :post %>
- 
-   <%= link_to 'Reject', reject_invite_path, class: 'btn btn-danger', method: :post %>
+		   <%= link_to 'Accept', accept_invite_path, class: 'btn btn-success', method: :post %>
+		 
+		   <%= link_to 'Reject', reject_invite_path, class: 'btn btn-danger', method: :post %><br /><br />
 
-This invite is already #{@invite.status} 
+		This invite is <%= @invite.status %>
 
-<% end %>
+	<% end %>
+
+</div>

@@ -9,8 +9,8 @@ class InvitesController < ApplicationController
     case (@invite.invite_kind || params[:invite_kind])
     when 'for_spouse'
       @invite.invite_kind = 'for_spouse'
-    when 'for_guardian'
-      @invite.invite_kind = 'for_guardian'
+    when 'for_sitter'
+      @invite.invite_kind = 'for_sitter'
     else
       redirect_to root_path
     end

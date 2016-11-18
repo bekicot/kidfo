@@ -3,7 +3,7 @@ class Invite < ActiveRecord::Base
 
   enum invite_kind: {
     for_spouse: 0,
-    for_guardian: 1
+    for_sitter: 1
   }
 
   enum status: {
@@ -19,7 +19,7 @@ class Invite < ActiveRecord::Base
     state :rejected
     state :canceled
 
-    event :accept, after: :create_family_parent_or_guardian do
+    event :accept, after: :create_family_parent_or_sitter do
       transitions from: :pending, to: :accepted
     end
 
@@ -42,14 +42,14 @@ class Invite < ActiveRecord::Base
 
   private
 
-  def create_family_parent_or_guardian
+  def create_family_parent_or_sitter
     user = User.find_by_email email
     if user.parentuser? && for_spouse?
       user.family = family
-    elsif user.guardianuser? && for_guardian?
+    elsif user.sitteruser? && for_sitter?
        
     else
-      raise ArgumentError, 'user kind and invite kind do not match'
+      raise ArgumentError, 'User kind and invite kind do not match'
     end
   end
 end
