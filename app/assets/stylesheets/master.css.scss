@@ -36,20 +36,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: 'Open Sans', sans-serif;
 }
 
-.homepage {
-  /* Ensure the html element always takes up the full height of the browser window */
-  /* The Magic */
-  background: url('/assets/bkg.jpg') no-repeat center center scroll;
-  display: table;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-}
-
 .navbar {
   background-image: none;
   background-repeat: no-repeat;
@@ -82,22 +68,25 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .booyah-box .special {
-  /* Location of the image */
-  /* Background image is centered vertically and horizontally at all times */
-  background-position: center center;
-  /* Background image doesn't tile */
-  background-repeat: no-repeat;
-  /* Background image is fixed in the viewport so that it doesn't move when 
-     the content's height is greater than the image's height */
-  background-attachment: fixed;
-  /* This is what makes the background image rescale based
-     on the container's size */
+  background-size: 100%;
+  position: absolute;
+  margin-right: 15px;
+  width: 95%;
+  height: 225px auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
   background-size: cover;
-  /* Set a background color that will be displayed
-     while the background image is loading */
-
+  -o-background-size: cover;
+  padding: 0px;
 }
 
+.booyah-box .content {
+  position: relative;
+  top: 100%;
+  width: 100%;
+  height: 300px;
+
+}
 .clear {
     clear: both;
 }
@@ -106,6 +95,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .img-responsive, .avatar{
   display: block;
   width: auto;
+  height: 150px;
+  position: center;
+  border: 3px;
+  border-radius: 2px;
+}
+
+.img-responsive, .family, .avatar{
+  display: block;
+  width: 150px;
   height: 150px;
   position: center;
   border: 3px;
@@ -136,3 +134,20 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   background: #ff0000; 
   color: #fff; 
 }
+
+.ourstory {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+  background: url('/assets/ourstory.png') no-repeat center center scroll;
+  display: table;
+  position: relative; 
+  height: 350px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+/* Sidebar Nav */
+
+

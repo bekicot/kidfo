@@ -20,6 +20,10 @@ class FamiliesController < ApplicationController
     end
   end
 
+  def show
+    @family = Family.find(params[:id])
+  end
+
   def edit
     @family = current_user.family
   end
@@ -35,7 +39,7 @@ class FamiliesController < ApplicationController
 
   private
   def family_params
-    params.require(:family).permit :name, kids_attributes: [:id, :name, :avatar, :birthdate, :gender, :emerg_contact_1, :emerg_contact_1_phone,:emerg_contact_2, :emerg_contact_2_phone, :insuranceprovider, :health_ins_enrollee_id, :health_ins_group_num, :bedtime, :sleeproutine, :allergies, :physicianname, :physicianphone, :chores, :nonos, :_destroy]
+    params.require(:family).permit [:name, :avatar], kids_attributes: [:id, :name, :avatar, :birthdate, :gender, :emerg_contact_1, :emerg_contact_1_phone,:emerg_contact_2, :emerg_contact_2_phone, :insuranceprovider, :health_ins_enrollee_id, :health_ins_group_num, :bedtime, :sleeproutine, :allergies, :physicianname, :physicianphone, :chores, :nonos, :_destroy]
 
     end
 

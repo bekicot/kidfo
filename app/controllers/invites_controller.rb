@@ -12,7 +12,7 @@ class InvitesController < ApplicationController
     when 'for_sitter'
       @invite.invite_kind = 'for_sitter'
     else
-      redirect_to root_path
+      redirect_to user_path(current_user)
     end
   end
 
@@ -22,7 +22,7 @@ class InvitesController < ApplicationController
     @invite.family = current_user.family
 
     if @invite.save
-      redirect_to root_path, notice: "Invite is sent to #{@invite.email}"
+      redirect_to user_path(current_user), notice: "Invite is sent to #{@invite.email}"
     else
       render :new
     end
@@ -33,12 +33,12 @@ class InvitesController < ApplicationController
 
   def accept
     @invite.accept!
-    redirect_to root_path, notice: 'Accept invite successfully!'
+    redirect_to user_path, notice: 'Accept invite successfully!'
   end
 
   def reject
     @invite.reject!
-    redirect_to root_path, notice: 'Reject invite successfully!'
+    redirect_to user_path, notice: 'Reject invite successfully!'
   end
 
   def cancel

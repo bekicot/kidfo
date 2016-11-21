@@ -1,5 +1,5 @@
   <div class="booyah-box col-xs-10 col-xs-offset-1">
-  <h1>Your Kid's Profile</h1>
+  <h1>Add Kid</h1>
   <%= simple_form_for @kid do |f|  %>
   	 <div class= "row">
 	  	<div class="col-xs-4">
@@ -33,6 +33,7 @@
 		<div class="col-xs-4">
 			<h3>Sleep</h3><br />
 				<%= f.input :bedtime, :as => :time, :minute_step => 15 , default: Time.parse("7:30")%>
+				<strong>Sleep Routine</strong>
 				<%= f.input :sleeproutine, :label => 'Sleep Routine',:input_html => { :cols => 5, :rows => 7 }   %>
 		</div>
 		<div class="col-xs-4">
@@ -47,7 +48,8 @@
 		</div>
 		
 	</div>
-		<%= f.submit 'Update', :class=>"btn btn-primary" %>
+		<%= f.submit 'Add Kid', :class=>"btn btn-primary" %>
 	<% end %>
+
 </div> 
 

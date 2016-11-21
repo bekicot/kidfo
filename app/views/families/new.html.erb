@@ -1,7 +1,7 @@
   <div class="booyah-box col-xs-10 col-xs-offset-1">
   <h1>Your Kid's Profile</h1>
   <%= simple_form_for @family do |family|  %>
-  		<%= family.input :name %>
+  		<%= family.hidden_field :name, value: current_user.last_name %>
   	 	<%= family.simple_fields_for :kids do |f| %>
   	 <div class= "row">
 	  	<div class="col-xs-4">

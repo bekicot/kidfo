@@ -6,8 +6,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.label :role, 'Sign up as', required: true %>
-    <%= f.collection_radio_buttons :role, [['parentuser', 'Parent'] ,['sitteruser', 'Sitter']], :first, :last %>
+    <%= f.hidden_field :role, value: "sitteruser" %>
     <%= f.input :first_name, required: true, autofocus: true %><br />
     <%= f.input :last_name, required: true, autofocus: true %><br />
     <%= f.input :email, required: true, autofocus: true %><br />

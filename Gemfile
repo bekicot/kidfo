@@ -31,11 +31,15 @@ gem 'sprockets', '2.11.0'
 gem 'devise', '>= 3.2.4'
 gem 'figaro', '>= 1.0.0'
 gem 'carrierwave'
-gem 'imdb'
+gem 'imdb', '~> 0.8'
+gem 'omdb'
 gem 'googlebooks'
 gem 'rails_autolink'
 # Search
 gem 'ransack'
+#Rich Text
+gem 'bootsy'
+
 gem 'rails_12factor', group: :productiongit
 gem 'activeadmin', github: 'activeadmin'
 gem 'cancancan', '~> 1.10'
@@ -43,7 +47,12 @@ gem 'cancancan', '~> 1.10'
 gem 'slim-rails'
 gem 'aasm'
 
+#Images
+gem "mini_magick"
+gem "rmagick"
+
 # Use Unicorn as the app server
+
 # gem 'unicorn'
 
 # Use Capistrano for deployment

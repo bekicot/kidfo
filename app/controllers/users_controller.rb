@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 	def show
 		@user = current_user
 		@family = @user.family
+		@families = @user.families
 	end
 	
 end

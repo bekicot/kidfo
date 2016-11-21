@@ -11,15 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118140614) do
+ActiveRecord::Schema.define(version: 20161119121138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "families", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "avatar"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -86,6 +101,16 @@ ActiveRecord::Schema.define(version: 20161118140614) do
 
   add_index "parenthoods", ["family_id"], name: "index_parenthoods_on_family_id", using: :btree
   add_index "parenthoods", ["user_id"], name: "index_parenthoods_on_user_id", using: :btree
+
+  create_table "sits", force: :cascade do |t|
+    t.integer  "sitter_id"
+    t.integer  "family_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sits", ["family_id"], name: "index_sits_on_family_id", using: :btree
+  add_index "sits", ["sitter_id"], name: "index_sits_on_sitter_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "role"

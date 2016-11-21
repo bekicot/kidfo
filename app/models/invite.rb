@@ -46,8 +46,15 @@ class Invite < ActiveRecord::Base
     user = User.find_by_email email
     if user.parentuser? && for_spouse?
       user.family = family
-    elsif user.sitteruser? && for_sitter?
-       
+    elsif for_sitter?
+      if user.families.exists?(family)
+        
+      else
+      user.families << family
+      end
+      if user.family.present?
+         user.update_attribute(:role, 3)
+      end
     else
       raise ArgumentError, 'User kind and invite kind do not match'
     end

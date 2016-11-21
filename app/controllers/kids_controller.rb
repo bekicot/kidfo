@@ -14,7 +14,7 @@ class KidsController < ApplicationController
 			redirect_to kid_path(@kid)
 		else
 			render :new, :status => :unprocessable_entity
-		end
+		end	
 
 	end
 

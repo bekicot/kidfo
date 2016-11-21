@@ -8,34 +8,34 @@
 </head>
 <body>
 
-<% if user_signed_in? %>
-<nav class="navbar" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-       <div class="brand"><%= image_tag 'brand.png', class: "brand" %> <span class="kidfo">KIDFO</span></div>
-    </div>
+ 
+
+
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="brand"><%= image_tag 'brand.png', class: "brand" %> <span class="kidfo">KIDFO</span></div>
        <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to 'Add Kid', new_kid_path %></li>
-          <li><%= link_to 'My Family', user_path(current_user) %></li>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+
+          <% if current_user.family %>
+              <li><%= link_to 'Add Kid', new_kid_path %></li>
+            <% else %>
+              <li><%= link_to 'Have Kids? Create A Family', new_family_path %></li>
           <% end %>
+          <li><%= link_to 'Profile', user_path(current_user) %></li>
+          <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+        <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myFavoriteModal">
+            Join Kidfo
+        </button>
+        <% end %>
+
         
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<% end %>
 
 <%= yield %>
 <br /><br />
@@ -47,6 +47,9 @@
      <p class="alert alert-danger"><%= alert %></p>
      <% end %>
     </div>
+
+
+
 
 </body>
 </html>
