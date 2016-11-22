@@ -1,15 +1,16 @@
-
     <div id="wrapper">
-
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
+            <a id="menu-toggle" href="#">
+               <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+            </button>
+            </a>
                 <li class="sidebar-brand">
                 </li>
-                <li>
-                    <a href="#">Meet Kidfo</a>
-                </li>
-                <h3><span style="padding-left: 10px;">ABOUT</h3>
+                <h3><li><%= link_to 'HOME', root_path %></li></h3>
+                <h3><span style="padding-left: 12px;">ABOUT</span></h3>
                 <li>
                     <a href="#ourmission">OUR MISSION</a>
                 </li>
@@ -22,21 +23,10 @@
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
         <div id="page-content-wrapper">
            <div class="homepage">
-        	</div>              
-        	<button type="button" class="btn btn-default pull-left" >
-			 <a id="menu-toggle" href="#">
-			 <span class="icon-bars-button ">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </span>
-			 </a>
-			 </button>
-	    </div>
+          </div>              
+      </div>
         <!-- /#page-content-wrapper -->
     </div>
     <!-- /#wrapper -->
@@ -47,11 +37,12 @@
                     <h2>OUR MISSION</h2>
                     <hr class="small">
                     <div class="row">
-                        <div class="col-md-12 col-sm-6">
-                            <h4>Provide peace of mind to parents & help trusted cared providers.</h4>
+                        <div class="col-lg-12 col-md-12 col-sm-6">
+                        <h3>Provide peace of mind to parents & help trusted cared providers.</h3>
                                 <p>Kidfo gives parents a template to store all their kids morst important info in one profile.  This ensures nothing is forgotten whether their child is staying with Grandpa & Grandma or going to daycare -> the quality of care is consistent with the parents wishes, or at least communicated!</p>
                                 <p>Kidfo provides support to trusted care providers by allowing them to check in with the childs needs and parents wishes before showing up.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <a href="#" class="btn btn-ghost btn-square btn-primary waves-effect">Learn More</a>
+                                <br /><br /><br /><br />
                             </div>
                         </div>
                     </div>
@@ -66,22 +57,20 @@
     <section id="ourstory" class="ourstory">
         <div class="container ">
             <div class="row text-center">
-                <div class="col-lg-10 col-lg-offset-1">
+                <div class="col-lg-10 col-lg-offset-1 opaquebox">
                     <h2>OUR STORY</h2>
                     <hr class="small">
                     <div class="row">
-                        <div class="col-md-12 col-sm-6">
-                            <h4>Provide peace of mind to parents & help trusted cared providers.</h4>
-                                <p>They say starting a business is like having a baby, this is true and this is our story.  Twins run in our family, so, when we found out we were having just one baby girl we were a bit surprised, relieved, and sad all at the same doctors visit. </p>
+                        <div class="col-lg-12 col-md-12 col-sm-6 "><br /><br />
+                            <p>They say starting a business is like having a baby, this is true and this is our story.  Twins run in our family, so, when we found out we were having just one baby girl we were a bit surprised, relieved, and sad all at the same doctors visit. </p>
 
-								<p>Our daughter was born in July 2016 and Kidfo was born just 3 short months later, making them irish twins. </p>
+							<p>Our daughter was born in July 2016 and Kidfo was born just 3 short months later, making them irish twins. </p>
 
-								<p>Having our daughter made us realize there is nothing more valuable than the care, protection and well being of your child.  Kidfo was conceived out of the desire to give our care providers, guardians, babysitters everything they needed (without coming off like a total tiger Mom) and our daughter the best start possible.  </p>
+							<p>Having our daughter made us realize there is nothing more valuable than the care, protection and well being of your child.  Kidfo was conceived out of the desire to give our care providers, guardians, babysitters everything they needed (without coming off like a total tiger Mom) and our daughter the best start possible.  </p>
 
-								<p>Kidfo is a web application where parents can share their kids profile with trusted parties. </p>
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myFavoriteModal">
-            						Sign Up
-        						</button>
+							<p>Kidfo is a web application where parents can share their kids profile with trusted parties. </p>
+                            <button type="button" class="btn btn-ghost btn-square btn-primary waves-effect" data-toggle="modal" data-target="#myFavoriteModal">Join Kidfo
+                            </button>
                             </div>
                         </div>
                     </div>
@@ -93,30 +82,6 @@
         </div>
         <!-- /.container -->
     </section>
-    <section id="contactus" class="bg-primary">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <h2>OUR MISSION</h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-6">
-                            <h4>Provide peace of mind to parents & help trusted cared providers.</h4>
-                                <p>Kidfo gives parents a template to store all their kids morst important info in one profile.  This ensures nothing is forgotten whether their child is staying with Grandpa & Grandma or going to daycare -> the quality of care is consistent with the parents wishes, or at least communicated!</p>
-                                <p>Kidfo provides support to trusted care providers by allowing them to check in with the childs needs and parents wishes before showing up.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row (nested) -->
-                </div>
-                <!-- /.col-lg-10 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
-
     <!-- Map -->
     <section id="contact" class="map">
         <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/place/Galvanize+Boulder+-+Walnut+Street/@40.0165447,-105.2838747,17z/data=!3m1!4b1!4m5!3m4!1s0x876bec26e5bdc177:0xda567bbef95b7d77!8m2!3d40.0165447!4d-105.281686"></iframe>
@@ -132,7 +97,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>Start Bootstrap</strong>
+                    <h4><strong>KIDFO</strong>
                     </h4>
                     <p>1023 Walnut St
                         <br>Boulder, CO 80302</p>
@@ -152,7 +117,7 @@
                         </li>
                     </ul>
                     <hr class="small">
-                    <p class="text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="text-muted">Copyright &copy; KIDFO 2016</p>
                 </div>
             </div>
         </div>
@@ -161,20 +126,18 @@
 
 
 
-		<div class="modal fade" id="myFavoriteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">Join Kidfo</h4>
-			      </div>
-			      <div class="modal-body">
-			     
-			      </div>
-			      <div class="modal-footer">
-			      </div>
-			    </div>
+	<div class="modal fade" id="myFavoriteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+		    <div class="modal-body">
+			  <h4 class="text-center">   JOIN KIDFO   </h4>
 			</div>
+            <div class="text-center">
+                  <%= link_to 'Create Account with Email/Password', new_user_registration_path, :class => 'btn btn-square btn-primary waves-effect' %>
+	        </div>
+            <br /><br /><br /><br /><br />
+	    </div>
+	</div>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 

@@ -89,21 +89,6 @@ body {
     padding-left: 250px;
 }
 
-#sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    left: 250px;
-    width: 0;
-    height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
-    background: #000;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
 #wrapper.toggled #sidebar-wrapper {
     width: 250px;
 }
@@ -153,7 +138,7 @@ body {
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: #000;
     background: rgba(255,255,255,0.2);
 }
 
@@ -173,9 +158,46 @@ body {
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    color: #000;
     background: none;
 }
+
+
+#menu-toggle {
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 300px;
+    width: 0;
+    height: 100%;
+    margin-left: -300px;
+    overflow-y: auto;
+    background: #fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper.active {
+    left: 300px;
+    width: 300px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.toggle {
+    margin: 5px 5px 0 0;
+}
+
 
 @media(min-width:768px) {
     #wrapper {
@@ -218,3 +240,41 @@ body {
   background-color: #cccccc;
   border-radius: 1px;
 }
+
+
+.btn {
+
+    height: 48px;
+    line-height: 45px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    padding: 0 22px;
+    margin: 10px 0;
+    margin-right: 8px;
+    touch-action: manipulation;
+    background-image: none;
+    white-space: nowrap;
+    transition: color 0.3s ease-out,background-color 0.3s ease-out;
+    background-color: #77cde3;
+}
+
+.bg-primary {
+    background-color: #77cde3;
+}
+.btn-ghost.btn-primary, .btn-primary.search-btn {
+    background-color: transparent;
+    color: #77cde3;
+    border-color: #77cde3;
+}
+
+.btn-square {
+    border-radius: 0;
+}
+
+
+

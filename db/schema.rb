@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119121138) do
+ActiveRecord::Schema.define(version: 20161122063137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,18 @@ ActiveRecord::Schema.define(version: 20161119121138) do
 
   create_table "families", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "avatar"
+    t.string   "emerg_contact_1"
+    t.string   "emerg_contact_1_phone"
+    t.string   "emerg_contact_2"
+    t.string   "emerg_contact_2_phone"
+    t.string   "insuranceprovider"
+    t.string   "health_ins_enrollee_id"
+    t.string   "health_ins_group_num"
+    t.string   "physicianname"
+    t.string   "physicianphone"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -70,24 +79,15 @@ ActiveRecord::Schema.define(version: 20161119121138) do
     t.string   "name"
     t.date     "birthdate"
     t.string   "gender"
-    t.string   "insuranceprovider"
     t.time     "bedtime"
     t.text     "sleeproutine"
     t.string   "allergies"
-    t.string   "physicianname"
-    t.string   "physicianphone"
     t.text     "chores"
     t.text     "nonos"
     t.integer  "family_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "avatar"
-    t.string   "health_ins_enrollee_id"
-    t.string   "health_ins_group_num"
-    t.string   "emerg_contact_1"
-    t.string   "emerg_contact_1_phone"
-    t.string   "emerg_contact_2"
-    t.string   "emerg_contact_2_phone"
   end
 
   add_index "kids", ["family_id"], name: "index_kids_on_family_id", using: :btree

@@ -1,11 +1,31 @@
   <div class="booyah-box col-xs-10 col-xs-offset-1">
-  <h1>Edit Family Name/Photo</h1>
+  <h1>Create Family</h1>
   	<%= simple_form_for @family do |family|  %>
-  		<%= family.input :name %>
- 		<h4>Profile Photo</h4>
-    	 <%= family.file_field :avatar %>
-    	<br />
-			<%= family.submit 'Update', :class=>"btn btn-primary" %>
+  		<div class="col-xs-4">
+	  		<%= family.input :name %>
+	 		<h4>Profile Photo</h4>
+	    	 <%= family.file_field :avatar %>
+	    	<br /><br />
+	    	<h3>Family Doctor</h3><br />
+			<%= family.input :physicianname, :label => 'Physician Name' %>
+			<%= family.input :physicianphone, :label => 'Physician Phone' %>
+
+	    </div>
+    	<div class="col-xs-4">
+			<h3>Emergency Contacts</h3><br />
+				<%= family.input :emerg_contact_1, :label => 'Emergency Contact 1'  %>
+				<%= family.input :emerg_contact_1_phone, :label => 'Phone'  %><br />
+				<%= family.input :emerg_contact_2, :label => 'Emergency Contact 2' %>
+				<%= family.input :emerg_contact_2_phone, :label => 'Phone'  %>
+		</div>
+		<div class="col-xs-4">
+			<h3>Health Insurance</h3><br />
+				<%= family.input :insuranceprovider, :label => 'Insurance Provider'  %>
+				<%= family.input :health_ins_enrollee_id, :label => 'Enrollee ID'  %>
+				<%= family.input :health_ins_group_num, :label => 'Group #'  %>
+		</div>
+		<div class="clear"></div>
+			<%= family.submit 'Update', :class=>"btn btn-primary pull-right" %>
 	<% end %>
 
 </div> 

@@ -31,7 +31,7 @@ class FamiliesController < ApplicationController
   def update
     @family = current_user.family
     if @family.update family_params
-      redirect_to root_path
+      redirect_to user_path
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class FamiliesController < ApplicationController
 
   private
   def family_params
-    params.require(:family).permit [:name, :avatar], kids_attributes: [:id, :name, :avatar, :birthdate, :gender, :emerg_contact_1, :emerg_contact_1_phone,:emerg_contact_2, :emerg_contact_2_phone, :insuranceprovider, :health_ins_enrollee_id, :health_ins_group_num, :bedtime, :sleeproutine, :allergies, :physicianname, :physicianphone, :chores, :nonos, :_destroy]
+    params.require(:family).permit [:name, :avatar, :physicianname, :physicianphone, :insuranceprovider,:health_ins_enrollee_id, :health_ins_group_num, :emerg_contact_1, :emerg_contact_1_phone,:emerg_contact_2, :emerg_contact_2_phone], kids_attributes: [:id, :name, :avatar, :birthdate, :gender, :bedtime, :sleeproutine, :allergies, :chores, :nonos, :_destroy]
 
     end
 

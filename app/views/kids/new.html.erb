@@ -9,22 +9,6 @@
 				<%= f.input :gender, :as =>:select, :collection => Kid::GENDER %><br />
 				<strong>Profile Photo Upload</strong><br/>				
 				<%= f.file_field :avatar %>
-
-		</div>
-		<div class="col-xs-4">
-			<h3>Emergency Contacts</h3><br />
-				<%= f.input :emerg_contact_1, :label => 'Emergency Contact 1'  %>
-				<%= f.input :emerg_contact_1_phone, :label => 'Phone'  %><br />
-				<%= f.input :emerg_contact_2, :label => 'Emergency Contact 2' %>
-				<%= f.input :emerg_contact_2_phone, :label => 'Phone'  %>
-		</div>
-		<div class="col-xs-4">
-			<h3>Health Insurance</h3><br />
-				<%= f.input :insuranceprovider, :label => 'Insurance Provider'  %>
-				<%= f.input :health_ins_enrollee_id, :label => 'Enrollee ID'  %>
-				<%= f.input :health_ins_group_num, :label => 'Group #'  %>
-				<%= f.input :physicianname, :label => 'Physician Name' %>
-				<%= f.input :physicianphone, :label => 'Physician Phone' %>
 		</div>
 		
     </div>
@@ -33,7 +17,6 @@
 		<div class="col-xs-4">
 			<h3>Sleep</h3><br />
 				<%= f.input :bedtime, :as => :time, :minute_step => 15 , default: Time.parse("7:30")%>
-				<strong>Sleep Routine</strong>
 				<%= f.input :sleeproutine, :label => 'Sleep Routine',:input_html => { :cols => 5, :rows => 7 }   %>
 		</div>
 		<div class="col-xs-4">

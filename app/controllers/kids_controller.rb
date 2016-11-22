@@ -42,15 +42,25 @@ class KidsController < ApplicationController
 		else
 			render :new, :status => :unprocessable_entity
 		end
-
-
 	end
+
+	def destroy
+		@kid = Kid.find(params[:id])
+
+		if @kid.family.parents.exists?(current_user)
+			@kid.destroy
+			redirect_to user_path
+		end
+		return render :text => 'Not Allowed', :status => :forbidden
+		
+	end
+
 
 
 	private
 
 	def kid_params
-		params.require(:kid).permit(:user_id, :name, :birthdate,:gender, :avatar, :insuranceprovider,:health_ins_enrollee_id, :health_ins_group_num, :bedtime, :sleeproutine, :allergies,:physicianname,:physicianphone,:parent1,:parent2, :parent1_phone, :parent2_phone, :emerg_contact_1, :emerg_contact_1_phone, :emerg_contact_2, :emerg_contact_2_phone, :chores,:nonos)
+		params.require(:kid).permit(:user_id, :name, :birthdate, :gender, :avatar, :bedtime, :sleeproutine, :allergies, :chores,:nonos)
 	end
 
 end

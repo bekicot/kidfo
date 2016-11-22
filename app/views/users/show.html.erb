@@ -3,7 +3,7 @@
 		<%= image_tag @family.avatar, class: "booyah-box special" if @family.present? %>
 	<div class="content">
 		<div class="col xs-2">
-		<div class="img-responsive rounded">
+		<div class="img-responsive img-thumbnail">
 				<%= image_tag @user.avatar, class: "avatar" if @user.avatar.present? %>
 		 </div>		
 		 </div><br />
@@ -19,7 +19,7 @@
 				   <%= link_to 'Invite Spouse/Partner',  new_invite_path(invite_kind: :for_spouse), :class => 'btn btn-default' %><br />
 	    		<% end %>
 	    		<%= link_to 'Invite Sitter',  new_invite_path(invite_kind: :for_sitter), :class => 'btn btn-default' %><br /><br />
-	    		<%= link_to 'Upload Family Photo',  edit_family_path(@family), :class => 'btn btn-default' %>
+	    		<%= link_to 'Edit Family Details/Photo',  edit_family_path(@family), :class => 'btn btn-default' %>
 		   <% end %>
 		</div>
 	</div>

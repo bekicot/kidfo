@@ -7,13 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
- 
-
-
-
+<nav>
+  <div class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     <!-- Page Content -->           
     <div class="brand"><%= image_tag 'brand.png', class: "brand" %> <span class="kidfo">KIDFO</span></div>
        <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
@@ -26,9 +24,9 @@
           <li><%= link_to 'Profile', user_path(current_user) %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
         <% else %>
-        <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myFavoriteModal">
-            Join Kidfo
-        </button>
+        <li><%= link_to 'Sign In', new_user_session_path, :class => 'mainlink' %><li>
+        <button type="button" class="btn btn-ghost btn-square btn-primary waves-effect" data-toggle="modal" data-target="#myFavoriteModal">Join Kidfo
+        </button></li>
         <% end %>
 
         
