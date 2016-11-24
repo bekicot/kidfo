@@ -48,13 +48,11 @@ class Invite < ActiveRecord::Base
       user.family = family
     elsif for_sitter?
       if user.families.exists?(family)
-        
+
       else
       user.families << family
       end
-      if user.family.present?
-         user.update_attribute(:role, 3)
-      end
+      user.update_attribute(:role, 3) if user.family.present?
     else
       raise ArgumentError, 'User kind and invite kind do not match'
     end

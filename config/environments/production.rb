@@ -21,8 +21,7 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Devise Host
-   config.action_mailer.default_url_options = { :host => 'meves-kidder.herokuapp.com' }
-
+  config.action_mailer.default_url_options = { host: 'meves-kidder.herokuapp.com' }
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.

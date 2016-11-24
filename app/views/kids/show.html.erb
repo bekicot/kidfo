@@ -3,14 +3,14 @@
 <div class="col-xs-2 col-xs-offset-2  text-vertical-center">
 		<h4>Kid</h4>
 		<div class="img-responsive">
-				<%= image_tag @kid.avatar, class: "img-circle avatar" if @kid.avatar.present? %>
+				<%= image_tag @kid.avatar.thumb, class: "img-circle avatar" if @kid.avatar.present? %>
 		 </div><br />
 			   <h4><%= @kid.name %></h4>
 				<i><%= @kid.birthdate %></i><br /><br />
 			<div class="pull-right">
 			<% if current_user  %>
 			<%= link_to 'Edit', edit_kid_path(@kid), :class => 'btn btn-default btn-sm' %>
-			 <%= link_to 'Delete Kid', kid_path(@kid), :method => :delete, :data => {:confirm => 'Please confirm deletion.'}, :class => 'btn btn-danger' %>
+			 <%= link_to 'Delete Kid', kid_path(@kid), :method => :delete, :data => {:confirm => 'Please confirm deletion.  Data cannot be restored.'}, :class => 'btn btn-warning btn-sm' %>
 	        <% end %>
 		    </div>
 </div>
@@ -21,7 +21,7 @@
   			<% @kid.family.parents.each do |parent| %>
   			<div class="col-xs-6" >
   		 		<div class="img-responsive">
-					<%= image_tag parent.avatar, class: "img-circle avatar" if parent.avatar.present? %>
+					<%= image_tag parent.avatar.thumb, class: "img-circle avatar" if parent.avatar.present? %>
 		 		</div>
   		 	<%= parent.first_name %> <%= parent.last_name %><br />
   		 	Phone: <%= parent.phone_number %>

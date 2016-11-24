@@ -1,7 +1,6 @@
 class CreateFavorites < ActiveRecord::Migration
   def change
     create_table :favorites do |t|
-
       t.integer :kid_id
       t.string :type
       t.string :name
@@ -10,7 +9,7 @@ class CreateFavorites < ActiveRecord::Migration
       t.string :book_isbn
       t.string :movie_cast
       t.string :movie_trailer_url
-  	 
+
       t.timestamps null: false
     end
   end

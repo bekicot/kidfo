@@ -243,7 +243,6 @@ body {
 
 
 .btn {
-
     height: 48px;
     line-height: 45px;
     font-size: 14px;
@@ -263,9 +262,7 @@ body {
     background-color: #77cde3;
 }
 
-.bg-primary {
-    background-color: #77cde3;
-}
+
 .btn-ghost.btn-primary, .btn-primary.search-btn {
     background-color: transparent;
     color: #77cde3;
@@ -276,5 +273,22 @@ body {
     border-radius: 0;
 }
 
+.bg-primary {
+    background-color: #77cde3;
+}
+
+.btn-pill {
+    background-color: #fff;
+    border-radius: 24px;
+    border-color: #77cde3;
+}
+.btn-sm {
+    height: 36px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 33px;
+    padding: 0 15px;
+    border-radius: 14px;
+}
 
 

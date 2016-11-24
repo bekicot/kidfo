@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
@@ -37,7 +36,7 @@ gem 'googlebooks'
 gem 'rails_autolink'
 # Search
 gem 'ransack'
-#Rich Text
+# Rich Text
 gem 'bootsy'
 
 gem 'rails_12factor', group: :productiongit
@@ -47,9 +46,9 @@ gem 'cancancan', '~> 1.10'
 gem 'slim-rails'
 gem 'aasm'
 
-#Images
-gem "mini_magick"
-gem "rmagick"
+# Images
+gem 'mini_magick'
+gem 'rmagick'
 
 # Use Unicorn as the app server
 
@@ -71,4 +70,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

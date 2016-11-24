@@ -1,12 +1,11 @@
 class Favorite < ActiveRecord::Base
-	belongs_to :kid
+  belongs_to :kid
 
-	CATEGORIES = {
+  CATEGORIES = {
 
-		'Activity' => 'activity',
-		'Food' => 'food',
-		'Drink' => 'drink'
+    'Activity' => 'activity',
+    'Food' => 'food',
+    'Drink' => 'drink'
 
-	}
-
+  }.freeze
 end

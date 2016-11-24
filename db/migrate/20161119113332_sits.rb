@@ -1,6 +1,6 @@
 class Sits < ActiveRecord::Migration
   def change
-  	 create_table :sits do |t|
+    create_table :sits do |t|
       t.integer :sitter_id
       t.integer :family_id
 

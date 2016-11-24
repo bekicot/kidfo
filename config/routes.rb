@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  devise_for :users, :controllers => { registrations: 'registrations' }
- 
+  devise_for :users, controllers: { registrations: 'registrations' }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'static_pages#index'
 
-  #resources :kids do
+  # resources :kids do
   #  resources :favorites
   #  resources :movies do
   #      collection { post :search, to: 'movies#index' }
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   #    collection { post :search, to: 'books#index' }
   #  end
   #  resources :foods, :drinks
-  #end
+  # end
 
   resources :invites do
     member do
@@ -30,18 +30,17 @@ Rails.application.routes.draw do
   resources :users, only: :show
 
   resources :families
-    resources :kids do
-      resources :favorites
-        resources :movies do
-         collection { post :search, to: 'movies#index' }
-      end
-      resources :books do
-         collection { post :search, to: 'books#index' }
-      end
-      resources :foods, :drinks
+  resources :kids do
+    resources :favorites
+    resources :movies do
+      collection { post :search, to: 'movies#index' }
+    end
+    resources :books do
+      collection { post :search, to: 'books#index' }
+    end
+    resources :foods, :drinks
   end
-  
-  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

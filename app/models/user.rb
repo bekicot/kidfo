@@ -12,16 +12,15 @@ class User < ActiveRecord::Base
   # invites
   has_many :invites
 
-  #for Sitter only
+  # for Sitter only
   has_many :sits, foreign_key: :sitter_id
   has_many :families, through: :sits, source: :family
-
 
   enum role: {
     parentuser: 1,
     sitteruser: 2,
     parentsitteruser: 3
   }
-  
+
   validates :role, presence: true
 end

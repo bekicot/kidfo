@@ -2,6 +2,11 @@
   <h1>Edit Kid</h1>
   <%= simple_form_for @kid do |f|  %>
   	 <div class= "row">
+  	 	<div class="col-xs-2">
+  	 		<div class="img-responsive">
+				<%= image_tag @kid.avatar.thumb, class: "img-circle avatar" if @kid.avatar.present? %>
+		 </div><br />
+		</div>
 	  	<div class="col-xs-4">
 			<h2>General Info</h2>
 			 	<%= f.input :name %>
