@@ -1,5 +1,5 @@
-<% if @user.parentuser? || @user.parentsitteruser? && @user.family == @family && @user.family.present? %>
-	<div class="booyah-box special col-xs-8 col-xs-offset-1">
+
+<div class="booyah-box special col-xs-10 col-xs-offset-1">
 	<div class="content">
 		<%= image_tag @family.avatar.family, class: "img-responsive booyah-box special" if @family.present? %>
 		<br /><br /><br /><br /><br /><br />
@@ -16,34 +16,54 @@
 		</div>
 		   <% if @family.present? %>
 				<% if @family.may_invite_spouse? %>
-				   <%= link_to 'Invite Spouse/Partner',  new_invite_path(invite_kind: :for_spouse), :class => 'btn btn-sm btn-pill waves-effect waves-light' %>
+				   <%= link_to 'Invite Spouse/Partner',  new_invite_path(invite_kind: :for_spouse), :class => 'btn btn-primary btn-cons' %>
 	    		<% end %>
-	    		<%= link_to 'Invite Sitter',  new_invite_path(invite_kind: :for_sitter), :class => 'btn btn-sm btn-pill waves-effect waves-light' %>
-	    		<%= link_to 'Edit Family Details/Photo',  edit_family_path(@family), :class => 'btn btn btn-sm btn-pill waves-effect waves-light' %>
+	    		<%= link_to 'Invite Sitter',  new_invite_path(invite_kind: :for_sitter), :class => 'btn btn-primary btn-cons' %>
+	    		<%= link_to 'Edit Family Details/Photo',  edit_family_path(@family), :class => 'btn btn btn-primary btn-cons' %>
 		   <% end %>
 		</div>
 	</div>
 
+	<% if @user.parentuser? || @user.parentsitteruser? && @user.family == @family && @user.family.present? %>
+
 	<div class="col-xs-4 col-xs-offset-1">
-		<h2 class="text-center">Kids</h2>  <br /><br />
-		
+		<h2 class="text-center">Kids</h2> <br /><br />
 	  		<% @family.kids.each do |kid| %>
-	  		<div class="col-xs-6">
-	  		 	<div class="img-responsive">
-					<%= image_tag kid.avatar, class: "img-circle avatar" if kid.avatar.present? %>
-			 	</div><br />
-			 	<%= link_to kid.name, kid_path(kid) %><br />
+	  		<div class="col-xs-12">
+	  		 	<div class="panel panel-default">
+	    			<div class="panel-head-custom panel-heading">
+	    			 <span class="thumbnail-wrapper d48 circular inline ">
+						<%= image_tag kid.avatar, class: "avatar" if kid.avatar.present? %>
+					 </span>
+					<h3 class="pull-right"><%= link_to kid.name, kid_path(kid) %></h3><br />
+			 		</div><br />
 	  			</div>
+	  		</div>
 	  		<% end %>
 	  	<br /><br />
 	</div>
+	<% end %>
+
+	<% if @family.present? && @family.sits.present? %>
+	<div class="col-xs-4 col-xs-offset-1">
+		<h2 class="text-center">Family Sitters</h2>  <br /><br />
+	  		<% @family.sitters.each do |sitter| %>
+	  		<div class="col-xs-4 col-xs-offset-1 text-center">
+	  			<div class="img-responsive family">
+	  				<%= image_tag sitter.avatar.thumb, class: "img-circle avatar" if sitter.avatar.thumb.present? %>
+	  			</div><br />
+	  		 	<%= link_to sitter.first_name + " " + sitter.last_name, user_path(sitter) %><br />
+	  			</div>
+	  		<% end %>
+	  	<br /><br />
+		</div>
 <% end %>
 
 	<% if @user.sitteruser? || @user.parentsitteruser? && @user.families.present? %>
-		<div class="col-xs-4">
+		<div class="col-xs-4 col-xs-offset-1">
 		<h2 class="text-center">Families I Sit For</h2>  <br /><br />
 	  		<% @families.each do |family| %>
-	  		<div class="col-xs-4">
+	  		<div class="col-xs-4 col-xs-offset-1">
 	  			<div class="img-responsive family">
 	  				<%= image_tag family.avatar.thumb, class: "img-circle avatar" if family.avatar.thumb.present? %>
 	  			</div>

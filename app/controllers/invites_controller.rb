@@ -5,6 +5,7 @@ class InvitesController < ApplicationController
 
   def new
     @invite = current_user.invites.new
+    @family = current_user.family
 
     case (@invite.invite_kind || params[:invite_kind])
     when 'for_spouse'

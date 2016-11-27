@@ -1,4 +1,4 @@
-<div class="booyah-box special col-xs-8 col-xs-offset-1">
+<div class="booyah-box special col-xs-10 col-xs-offset-1">
 	<div class="content">
 	<%= image_tag @family.avatar.family, class: "img-responsive booyah-box special" if @family.present? %>
 	</div>
@@ -12,8 +12,8 @@
 		<div class="img-responsive rounded">
 			<%= image_tag parent.avatar, class: "avatar" if parent.avatar.present? %>
 		 </div>		
-			<h2><%= parent.first_name %> <%= parent.last_name %></h2>
-			<h4><%= parent.email %></h4>
+			<h4><%= parent.first_name %> <%= parent.last_name %></h4>
+			<%= parent.email %>
 		</div>
 		<% end %>	
 	</div>

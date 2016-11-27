@@ -2,7 +2,7 @@
 <!-- Favorites Section: Food, Drinks, Activities -->
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
-	<h2><%= @kid.name %>'s Favorites</h2><br/>
+	<h2><%= @kid.name %>'s Favorites: Remove</h2><br/>
 		<div class="col-xs-4">
 				  <h3>Favorite Foods</h3>
 				  <hr>
@@ -11,7 +11,7 @@
 				   		<% if food.category == 'food' %>
 							<h4><%= food.name %></h4>
 							<% if !food.description.empty? %>
-			    				<b>Details:</b> <%= food.description %>
+			    				<b>Details:</b> <%= food.description %><br/>
 			    			<% end %><br /><br />
 						<% end %>
 					<% end %>

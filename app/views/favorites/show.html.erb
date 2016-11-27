@@ -1,4 +1,11 @@
-<h3>Favorite</h3><br />
- <%= @favorite.category %><br />
- <%= @favorite.name %><br />
- <%= @favorite.description %><br />
+
+<!-- Favorites Section: Food, Drinks, Activities -->
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1">
+	<h2><%= @kid.name %>'s Favorite: Remove</h2><br/>
+		<div class="col-xs-4">
+			<h4><%= favorite.name %></h4>
+			<%= link_to 'Delete Favorite', kid_favorite_path(@favorite), :method => :delete,  :class => 'btn btn-warning btn-sm' %>
+		</div>
+	</div>
+</div>

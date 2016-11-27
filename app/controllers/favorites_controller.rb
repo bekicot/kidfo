@@ -14,7 +14,7 @@ class FavoritesController < ApplicationController
 
   def show
     @kid = Kid.find(params[:kid_id])
-    @favorite = Favorite.find(params[:id])
+    @favorite = Favorite.find(params[:favorite_id])
   end
 
   def create
@@ -26,9 +26,6 @@ class FavoritesController < ApplicationController
 
   def destroy
     @kid = Kid.find(params[:kid_id])
-    if @kid.user != current_user
-      return render text: 'Not Allowed', status: :forbidden
-    end
     @kid.favorite.destroy
     redirect_to kid_path(@kid)
   end

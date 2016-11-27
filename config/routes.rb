@@ -38,7 +38,6 @@ Rails.application.routes.draw do
     resources :books do
       collection { post :search, to: 'books#index' }
     end
-    resources :foods, :drinks
   end
 
   # Example of regular route:
