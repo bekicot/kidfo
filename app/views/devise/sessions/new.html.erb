@@ -1,11 +1,11 @@
   <body class="fixed-header ">
-    <div class="login-wrapper ">
+    <div class="login-wrapper img-responsive">
       <!-- START Login Background Pic Wrapper-->
       <div class="bg-pic">
         <!-- START Background Caption-->
         <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
           <h3 class="semi-bold pull-bottom sm-pull-bottom text-white">
-          Provide peace of mind to parents & help trusted cared providers.</h2>
+          Provide peace of mind to parents & vital information to trusted cared providers.</h2>
         </div>
         <!-- END Background Caption-->
       </div>
@@ -26,18 +26,12 @@
             </div>
             <br />
           <% end %>
-
+          <br />New to Kidfo? <%= link_to 'Learn More', root_path %><br /><br />
           <%= render "devise/shared/links" %>
           </div>
 
           <!--END Login Form-->
-          <div class="pull-bottom sm-pull-bottom">
-            <div class="m-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
-              <div class="col-sm-9 col-sm-offset-2 no-padding m-t-10">  
-                  KIDFO 2017
-                </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>

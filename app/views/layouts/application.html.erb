@@ -18,17 +18,16 @@
 </head>
 <body>
 <nav>
-  <div class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
      <!-- Page Content -->           
-    <div class="brand"><%= image_tag 'brand.png', class: "brand" %> <span class="kidfo">KIDFO</span></div>
+    <div class="brand"><%= image_tag 'brand.png', class: "brand" %></div>
        <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <!-- START User Info-->
           <div class="visible-lg visible-md m-t-10">
             <div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
-              <span class="semi-bold"><%= current_user.first_name %></span> <span class="text-master"><%= current_user.last_name %></span>
+              <%= link_to current_user.first_name + " " + current_user.last_name, user_path(current_user), :class => 'semi-bold text-master' %>
             </div>
             <div class="dropdown pull-right">
               <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,15 +48,15 @@
             </div>
           </div>
         <% else %>
-          <li><%= link_to 'Sign In', new_user_session_path, :class => 'mainlink' %><li>
-          <button type="button" class="btn btn-primary btn-cons" data-toggle="modal" data-target="#myFavoriteModal">Join Kidfo
-          </button></li>
+          <li><%= link_to 'Sign In', new_user_session_path, :class => 'navbar-nav' %><li>
+          <%= link_to new_user_registration_path do %><i class="fa fa-id-card-o"></i> Join Kidfo
+          <% end %></li>
         <% end %>
 
         
       </ul>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+ 
 </nav>
 
 <%= yield %>

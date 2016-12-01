@@ -3,7 +3,8 @@
   	<%= simple_form_for @family do |family|  %>
   		<div class="col-xs-4">
 	  		<%= family.input :name, :label => 'Family Name' %>
-	 		<h4>Profile Photo</h4>
+	  		<%= image_tag @family.avatar.thumb, class: "img-responsive circle" if @family.present? %>
+	 		<h4>Family Photo</h4>
 	    	 <%= family.file_field :avatar %>
 	    	<br /><br />
 	    	<h3>Family Doctor</h3><br />
