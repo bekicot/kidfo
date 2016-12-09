@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208032713) do
+ActiveRecord::Schema.define(version: 20161209050144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20161208032713) do
     t.string   "physicianname"
     t.string   "physicianphone"
   end
+
+  create_table "familysitters", force: :cascade do |t|
+    t.integer  "sitter_id"
+    t.integer  "family_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "familysitters", ["family_id"], name: "index_familysitters_on_family_id", using: :btree
+  add_index "familysitters", ["sitter_id"], name: "index_familysitters_on_sitter_id", using: :btree
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "kid_id"
@@ -121,8 +131,14 @@ ActiveRecord::Schema.define(version: 20161208032713) do
   create_table "sits", force: :cascade do |t|
     t.integer  "sitter_id"
     t.integer  "family_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "paid"
+    t.integer  "rate"
+    t.integer  "status"
+    t.text     "sit_details"
+    t.datetime "sit_start"
+    t.datetime "sit_end"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "sits", ["family_id"], name: "index_sits_on_family_id", using: :btree

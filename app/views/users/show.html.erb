@@ -14,12 +14,13 @@
 			<h3>     <%= @user.first_name %> <%= @user.last_name %></h3>
 		</div>
 		<div class="col-xs-9">
-		   <% if @family.present? %>
+		   <% if @family.present? && @user == current_user %>
 				<% if @family.may_invite_spouse? %>
 				   <%= link_to 'Invite Spouse/Partner',  new_invite_path(invite_kind: :for_spouse), :class => 'btn btn-primary btn-cons' %>
 	    		<% end %>
 	    		<%= link_to 'Invite Sitter',  new_invite_path(invite_kind: :for_sitter), :class => 'btn btn-primary btn-sm btn-cons' %>
 	    		<%= link_to 'Edit Family Details/Photo',  edit_family_path(@family), :class => 'btn btn btn-primary btn-sm btn-cons' %>
+	    		<%= link_to 'Create Sit',  new_sit_path, :class => 'btn btn btn-primary btn-sm btn-cons' %>
 		   <% end %>
 		 </div>
 		</div>
@@ -29,22 +30,34 @@
 <!-- Section Kids --> 
 <div class="kids_section">
 	<div class="col-xs-10 col-xs-offset-1">
-		<h2 class="text-center">Kids</h2> <br /><br />
-	  		<% @family.kids.each do |kid| %>
-	  		<div class="col-xs-4">
-				<%= image_tag kid.avatar.thumb, class: "img-responsive circle-avatar img-circle kid" if kid.avatar.thumb.present? %>
-				<br />
-				<div class="caption">
-					<%= link_to kid.name, kid_path(kid) %><br />
-			 	</div><br />
-	  		</div>
-	  		<% end %>
-	  	<br /><br />
+		<div class="col-xs-6" >
+			<h2 class="text-center">Kids</h2> <br /><br />
+		  		<% @family.kids.each do |kid| %>
+		  		<div class="col-xs-4">
+					<%= image_tag kid.avatar.thumb, class: "img-responsive circle-avatar img-circle kid" if kid.avatar.thumb.present? %>
+					<br />
+					<div class="caption">
+						<%= link_to kid.name, kid_path(kid) %><br />
+				 	</div><br />
+		  		</div>
+		  		<% end %>
+		  	<br /><br />
+		</div>
+		<div class="col-xs-6">
+			<h2 class="text-center">Upcoming Sits</h2> <br /><br />
+		  		<% @family.sits.each do |sit| %>
+		  		<div class="col-xs-4">
+		  			<%= sit.sit_start %><br />
+		  			<%= sit.sit_details %><br />
+		  		</div>
+		  		<% end %>
+		  	<br /><br />
+		</div>
 	</div>
 	<% end %>
 </div>
 <!-- End Section Kids --> 
-	<% if @family.present? && @family.sits.present? %>
+	<% if @family.present? && @family.familysitters.present? %>
 	<div class="col-xs-10 col-xs-offset-1">
 		<h2 class="text-center">Sitters</h2>  <br /><br />
 	  		<% @family.sitters.each do |sitter| %>

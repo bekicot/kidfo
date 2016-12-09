@@ -4,9 +4,10 @@ class Family < ActiveRecord::Base
   has_many :parenthoods
   has_many :users, through: :parenthoods
   has_many :kids
-  has_many :sits
-  has_many :sitters, through: :sits
+  has_many :familysitters
+  has_many :sitters, through: :familysitters
   has_many :invites
+  has_many :sits
 
   validates :name, presence: true
 

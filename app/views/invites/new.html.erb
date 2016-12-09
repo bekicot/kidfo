@@ -16,7 +16,7 @@
 	<% end %>
 </div>
 <br />
-<% if @family.present? && @family.sits.present? %>
+<% if @family.present? && @family.familysitters.present? %>
 	<div class="col-xs-10 col-xs-offset-1">
 		<h2 class="text-center">Current Family Sitters</h2>  <br /><br />
 	  		<% @family.sitters.each do |sitter| %>

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SittingTest < ActiveSupport::TestCase
+class FamilysitterTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

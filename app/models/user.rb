@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :invites
 
   # for Sitter only
-  has_many :sits, foreign_key: :sitter_id
-  has_many :families, through: :sits, source: :family
+  has_many :familysitters, foreign_key: :sitter_id
+  has_many :families, through: :familysitters, source: :family
 
   enum role: {
     # Person with Kids, Family, But Does not Sit for Others

@@ -1,0 +1,18 @@
+  <div class="booyah-box col-xs-6 col-xs-offset-1">
+	  <h1>Create Sit</h1>
+	  <%= simple_form_for @sit do |f|  %>
+	  	<div class="col-xs-12">
+			 	<%= f.input :sit_start %><br />
+			 	<%= f.input :sit_end %><br />
+				<%= f.input :paid %><br />
+				<%= f.input :rate %><br />
+				<%= f.input :sit_details %><br />
+				<%= f.hidden_field :family_id, value: current_user.family %>
+				<%= f.hidden_field :status, value: "1" %>		
+		</div>
+
+      <%= f.submit 'Create Sit', :class=>"btn btn-primary" %>
+	<% end %>
+
+</div> 
+

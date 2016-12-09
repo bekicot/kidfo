@@ -3,7 +3,7 @@ class Invite < ActiveRecord::Base
 
   enum invite_kind: {
     for_spouse: 0,
-    for_sitter: 1
+    for_sitter: 1,
   }
 
   enum status: {

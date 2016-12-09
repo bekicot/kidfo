@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: :show
+  resources :sits
 
   resources :families
   resources :kids do
