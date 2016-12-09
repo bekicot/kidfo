@@ -17,8 +17,11 @@ class User < ActiveRecord::Base
   has_many :families, through: :sits, source: :family
 
   enum role: {
+    # Person with Kids, Family, But Does not Sit for Others
     parentuser: 1,
+    # Person who watches for families, but doesn't have family.
     sitteruser: 2,
+    # Person with Kids, Family, also been invited to view/sit for other families.
     parentsitteruser: 3
   }
 

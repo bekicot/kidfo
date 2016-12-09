@@ -33,7 +33,6 @@ gem 'devise', '>= 3.2.4'
 gem 'figaro', '>= 1.0.0'
 gem 'carrierwave'
 gem 'imdb', '~> 0.8'
-gem 'omdb'
 gem 'googlebooks'
 gem 'rails_autolink'
 # Search
@@ -53,6 +52,9 @@ gem 'mini_magick'
 gem 'rmagick'
 
 # Use Unicorn as the app server
+gem 'themoviedb'
+
+
 
 # gem 'unicorn'
 

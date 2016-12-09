@@ -4,8 +4,8 @@ class Favorite < ActiveRecord::Base
   CATEGORIES = {
 
     'Activity' => 'activity',
-    'Food' => 'food',
-    'Drink' => 'drink'
+    'Book' => 'book',
+    'Movie' => 'movie'
 
   }.freeze
 end

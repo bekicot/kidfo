@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127174943) do
+ActiveRecord::Schema.define(version: 20161208032713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161127174943) do
     t.string   "movie_trailer_url"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "releasedate"
   end
 
   create_table "invites", force: :cascade do |t|
@@ -82,12 +83,27 @@ ActiveRecord::Schema.define(version: 20161127174943) do
     t.time     "bedtime"
     t.text     "sleeproutine"
     t.string   "allergies"
-    t.text     "chores"
     t.text     "nonos"
     t.integer  "family_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "avatar"
+    t.time     "nap1"
+    t.time     "nap2"
+    t.time     "nap3"
+    t.text     "naproutine"
+    t.time     "breakfasttime"
+    t.text     "breakfastdetails"
+    t.time     "snack1time"
+    t.text     "snack1details"
+    t.time     "lunchtime"
+    t.text     "lunchdetails"
+    t.time     "snack2time"
+    t.text     "snack2details"
+    t.time     "dinnertime"
+    t.text     "dinnerdetails"
+    t.time     "afterdinnertime"
+    t.text     "afterdinnerdetails"
   end
 
   add_index "kids", ["family_id"], name: "index_kids_on_family_id", using: :btree

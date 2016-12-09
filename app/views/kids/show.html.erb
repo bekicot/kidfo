@@ -1,279 +1,237 @@
 
 <div class="row">
-  <div class="col-xs-11 ">
-	<div class="col-xs-3 col-xs-offset-2  text-vertical-center">
-		<h4>Kid</h4>
-		<div class="img-responsive family">
-				<%= image_tag @kid.avatar.thumb, class: "img-circle avatar" if @kid.avatar.present? %>
-		 </div><br />
-			   <h4><%= @kid.name %></h4>
-				<i><%= @kid.birthdate %></i><br /><br />
-    </div>
-
-
-	<div class="col-xs-6  text-vertical-center">
-		<h4>Parents/Guardians</h4><br />
-		<div class="row">
-  			<% @kid.family.parents.each do |parent| %>
-  			<div class="col-xs-6" >
-  		 		<div class="img-responsive family">
-					<%= image_tag parent.avatar.thumb, class: "img-circle avatar" if parent.avatar.present? %>
-		 		</div>
-  		 	<h4><%= parent.first_name %> <%= parent.last_name %></h4>
-  		 	Phone: <%= parent.phone_number %>
-  		 	</div>
-  			<% end %>
-  			<br /><br /><br /><br />
-  			</div>
-		</div>
-	<div class="pull-right">
-			<% if current_user  %>
-			<%= link_to 'Edit', edit_kid_path(@kid), :class => 'btn btn-default btn-sm' %>
-			 <%= link_to 'Delete Kid', kid_path(@kid), :method => :delete, :data => {:confirm => 'Please confirm deletion.  Data cannot be restored.'}, :class => 'btn btn-warning btn-sm' %>
-	        <% end %>
-	</div>
-	</div>
-</div>
-
-<br /><br />
-
-<div class="row">
-	<div class="col-xs-10 col-xs-offset-1">
-	    <div class="col-xs-4">
-			<div class="panel panel-default">
-				  <div class="panel-head-custom panel-heading">
-				    <h3 class="panel-title">Health and Insurance</h3>
-				  </div>
-				  <div class="panel-body">
-				   Insurance Provider: <%= @kid.family.insuranceprovider %><br />
-				   Enrollee ID: <%= @kid.family.health_ins_enrollee_id %><br />
-				   Group #: <%= @kid.family.health_ins_group_num %><br />
-				   Physician Name: <%= @kid.family.physicianname %><br />
-				   Physician Phone: <%= @kid.family.physicianphone %><br />
-					<br />
-				  </div>
-			</div>
-		</div>
-
-		<div class="col-xs-3">
-				<div class="panel panel-default">
+	  <div class="col-md-10 col-xs-10 col-xs-offset-1">
+		<div class="col-xs-4 text-center">
+			<h4>Kid</h4>
+			<div class="img-responsive">
+					<%= image_tag @kid.avatar.thumb, class: "img-responsive img-circle circle-avatar kid" if @kid.avatar.present? %>
+			 </div><br />
+			 <div class="caption">
+				 <h4><%= @kid.name %></h4>
+				 <% bday = @kid.birthdate %>
+				 <i><%= bday.strftime("%B") + " " + bday.strftime("%d") + ", " + bday.strftime("%Y") %></i><br /><br />
+			 </div>
+	    	    <% if @kid.family.parents.exists?(current_user)  %>
+				<%= link_to 'Edit', edit_kid_path(@kid), :class => 'btn btn-default btn-sm' %>
+				 <%= link_to 'Delete Kid', kid_path(@kid), :method => :delete, :data => {:confirm => 'Please confirm deletion.  Data cannot be restored.'}, :class => 'btn btn-primary btn-cons btn-sm' %>
+		        <% end %>
+	    </div>	
+	   	<div class="col-xs-8">
+	   		<br /><br /><br /><br />
+	   		<div class="col-xs-6">
+				<div class="panel pull-down panel-default">
 					  <div class="panel-head-custom panel-heading">
-					    <h3 class="panel-title">Emergency Contact 1</h3>
+					    <h3 class="panel-title">Medical</h3>
+					  </div>
+					  <div class="panel-body">
+					   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#kidMedicalInfo">
+			        			MEDICAL INFO
+			    		  </button>  
+					  </div>
+				</div>
+				<div class="panel pull-down panel-default">
+					  <div class="panel-head-custom panel-heading">
+					    <h3 class="panel-title">Emergency Contacts</h3>
 					  </div>
 					  <div class="panel-body">
 					   <%= @kid.family.emerg_contact_1 %><br />
 					   <%= @kid.family.emerg_contact_1_phone %>
-						<br />
-					  </div>
-				</div>
-		</div>
-		<div class="col-xs-3">
-				<div class="panel panel-default">
-					  <div class="panel-head-custom panel-heading">
-					    <h3 class="panel-title">Emergency Contact 2</h3>
-					  </div>
-					  <div class="panel-body">
+						<br /><br />
+					  <% if @kid.family.emerg_contact_2 %>
 					   <%= @kid.family.emerg_contact_2 %><br />
 					   <%= @kid.family.emerg_contact_2_phone %>
-						<br />
+					  <% end %>
 					  </div>
+				</div><br /><br />
+			</div>
+			<div class="col-xs-6">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">No-Nos</h3>
+				  </div>
+				  <div class="panel-body">
+				   Allergies: <br/><%= @kid.allergies %><br /><br />
+				   Please avoid:<br/><%= @kid.nonos %><br />
+
+				  </div>
+				</div>
+			</div>
+		</div>
+				
+	</div>
+
+	<br /><br />
+	<div class="clear"></div>
+
+	<div class="row">
+		<div class="col-md-10 col-xs-10 col-xs-offset-1">
+			<div class="col-xs-8">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title" >Eat Routine</h3> 
+				  </div>
+				  <div class="panel-body">
+				  
+				  </div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title" >SLEEP</h3>
+				  </div>
+				  <div class="panel-body">
+				   			<i>Bed Time: </i><strong><%= @kid.bedtime.strftime("%l")%>:<%= @kid.bedtime.strftime("%M")%></strong><br />
+				   			<br/><%= @kid.sleeproutine %><br />
+						<br />
+				  	<div class="row">
+				  		<div class="col-xs-4"><i>Nap 1:</i><strong><%= @kid.nap1.strftime("%l")%>:<%= @kid.nap1.strftime("%M")%></strong></div>
+				  		<div class="col-xs-4"><i>Nap 2:</i><strong><%= @kid.nap2.strftime("%l")%>:<%= @kid.nap2.strftime("%M")%></strong></div>
+				  		<div class="col-xs-4"><i>Nap 3:</i><strong><%= @kid.nap3.strftime("%l")%>:<%= @kid.nap3.strftime("%M")%></strong></div>
+				  	</div><br/>
+				     	  <br/><%= @kid.naproutine %><br />
+
+					<br />
+				  </div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-</div>
+	<div class="clear"></div>
 
-<br /><br /><br />
-
-<div class="row">
-	<div class="col-xs-10 col-xs-offset-1">
-		<div class="col-xs-4">
-			<div class="panel panel-default">
-			  <div class="panel-heading">
-			    <h3 class="panel-title" >Sleep Routine</h3>
-			  </div>
-			  <div class="panel-body">
-			   Bed Time: <br/><%= @kid.bedtime.hour %>:<%= @kid.bedtime.min %><br />
-			   Sleep Details: <br/><%= @kid.sleeproutine %><br />
-				<br />
-			  </div>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="panel panel-default">
-			  <div class="panel-heading">
-			    <h3 class="panel-title">No-Nos</h3>
-			  </div>
-			  <div class="panel-body">
-			   Allergies: <br/><%= @kid.allergies %><br /><br />
-			   Please avoid:<br/><%= @kid.nonos %><br />
-
-			  </div>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="panel panel-default">
-			  <div class="panel-heading">
-			    <h3 class="panel-title">Chores</h3>
-			  </div>
-			  <div class="panel-body">
-			   Details:<br /> <%= @kid.chores %><br />
-				<br />
-			  </div>
-			</div>
-		</div>
+	<div class="col-md-10 col-xs-10 col-xs-offset-1"><h3><%= @kid.name %>'s Favorites <%= link_to ' (Edit)', kid_favorites_path(@kid) if @kid.family.parents.exists?(current_user) %></h3>
 	</div>
-</div>
 
-<div class="clear"></div>
+	<!-- Favorites Section: Books and Movies -->
+	<div class="row">
+		<div class="col-md-10 col-xs-10 col-xs-offset-1">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Favorite Activities</h3>
+					  </div>
+					  <div class="panel-body">
+					  <% if @favorites.any? %>
+					   		<% @favorites.each do |activity, index| %>
+						   		<% if activity.category == 'activity' %>
+								<div class="col-xs-4 col-sm-4 hideOverflow">
+									<b><%= activity.name %></b><br />
+					    			<b>Description:</b> <%= activity.description %><br />
+								</div>
+								<% end %>
+							<% end %>
+					    <br />
+					  <% end %>
+		   			</div>
+		   			<br /><br />
+		   			<% if @kid.family.parents.exists?(current_user) %>
+		   			 <div class="panel-footer">
+						  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myFavoriteModal">
+			        			Add Favorite
+			    		  </button>  
+			    	 </div>
+				    <% end %>
+			</div>
+			</div>
 
-
-
-<!-- Favorites Section: Food, Drinks, Activities -->
-<div class="row">
-	<div class="col-xs-10 col-xs-offset-1">
-	<h2><%= @kid.name %>'s Favorites</h2><br/>
-		<div class="col-xs-4">
-				  <h3>Favorite Foods</h3>
-				  <hr>
-				  <% if @favorites.any? %>
-				   <%	@favorites.each do |food| %>
-				   		<% if food.category == 'food' %>
-							<h4><%= food.name %></h4>
-							<% if !food.description.empty? %>
-			    				<b>Details:</b> <%= food.description %>
-			    			<% end %><br /><br />
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Favorite Books</h3>
+					  </div>
+					  <div class="panel-body">
+					  <% if @favorites.any? %>
+					   <%	@favorites.each do |book, index| %>
+					   		<% if book.category == 'book' %>
+							<div class="col-xs-4 col-sm-4 hideOverflow">
+								<%= image_tag book.image_link, class: "img-responsive " if book.image_link.present? %><br /><br />
+								<b>Title:</b> <%= book.name %><br />
+				    			<b>Description:</b> <%= book.description %><br />
+							</div>
+							<% end %>
 						<% end %>
+					    <br />
+					 <% end %>
+					 <br /><br />
+					 </div>
+					<% if @kid.family.parents.exists?(current_user) %>
+					  <div class="panel-footer">
+					 	<%= link_to 'Add Favorite Book', new_kid_book_path(@kid), :class => 'btn btn-primary' %>
+					 </div>
 					<% end %>
-				    <br />
-				 <% end %>
-		</div>
+					
+				</div>
+			</div>
 
-		<div class="col-xs-4">
-				  <h3>Favorite Drinks</h3>
-				  <hr>
-				  <% if @favorites.any? %>
-				   <%	@favorites.each do |drink| %>
-				   		<% if drink.category == 'drink' %>
-							<h4><%= drink.name %></h4>
-							<% if !drink.description.empty? %>
-			    				<b>Details:</b> <%= drink.description %>
-			    			<% end %><br /><br />
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Favorite Movies</h3>
+					  </div>
+					  <div class="panel-body">
+					  <% if @favorites.any? %>
+					   <%	@favorites.each do |movie, index| %>
+					   		<% if movie.category == 'movie' %>
+							<div class="col-xs-4 col-sm-4 hideOverflow">
+								<%= image_tag movie.image_link, class: "img-responsive " if movie.image_link.present? %><br /><br />
+								<b>Title:</b> <%= movie.name %><br />
+				    			<b>Released:</b> <%= movie.releasedate %><br />
+				    			<b>Overview:</b> <%= movie.description %><br />
+							</div>
+							<% end %>
 						<% end %>
-					<% end %>
-				    <br />
-				 <% end %>
-		</div>
-
-		<div class="col-xs-4">
-		
-				  <h3>Favorite Activities</h3>
-				  <hr>
-				  <% if @favorites.any? %>
-				   <%	@favorites.each do |activity| %>
-				   		<% if activity.category == 'activity' %>
-							<h4><%= activity.name %></h4>
-							<% if !activity.description.empty? %>
-			    				<b>Details:</b> <%= activity.description %>
-			    			<% end %><br /><br />
-						<% end %>
-					<% end %>
-				    <br />
-				 <% end %>
-		</div>
-		<div class="clear"></div>
-		<% if @kid.family.parents.exists?(current_user) %>
-		<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myFavoriteModal">
-	        Add Favorite
-	     </button>
-	    <% end %>
-
-	</div>
-</div>
-<br /><br /><br />
-
-
-<!-- Favorites Section: Books and Movies -->
-<div class="row">
-	<div class="col-xs-10 col-xs-offset-1">
-		<div class="col-xs-12">
-			<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Favorite Books</h3>
-				  </div>
-				  <div class="panel-body">
-				  <% if @favorites.any? %>
-				   <%	@favorites.each do |book, index| %>
-				   		<% if book.category == 'book' %>
-						<div class="col-xs-4 col-sm-4 hideOverflow">
-							<%= image_tag book.image_link, class: "img-responsive " if book.image_link.present? %><br /><br />
-							<b>Title:</b> <%= book.name %><br />
-			    			<b>Description:</b> <%= book.description %><br />
-						</div>
-						<% end %>
-					<% end %>
-				    <br />
-				 <% end %>
-				 <br /><br />
-				 </div>
-				<% if @kid.family.parents.exists?(current_user) %>
-				  <div class="panel-footer">
-				 	<%= link_to 'Add Favorite Book', new_kid_book_path(@kid), :class => 'btn btn-primary' %>
-				 </div>
-				<% end %>
-				
+					    <br />
+					 <% end %>
+					 <br /><br />
+					 </div>
+					 <% if @kid.family.parents.exists?(current_user) %>
+					 <div class="panel-footer">
+					 	<%= link_to 'Add Favorite Movie', new_kid_movie_path(@kid), :class => 'btn btn-primary' %>
+					 </div>
+					 <% end %>
+					
+					</div>
+				</div>
 			</div>
 		</div>
-
-		<div class="col-xs-12">
-			<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Favorite Movies</h3>
-				  </div>
-				  <div class="panel-body">
-				  <% if @favorites.any? %>
-				   <%	@favorites.each do |movie, index| %>
-				   		<% if movie.category == 'movie' %>
-						<div class="col-xs-4 col-sm-4 hideOverflow">
-							<%= image_tag movie.image_link, class: "img-responsive " if movie.image_link.present? %><br /><br />
-							<b>Title:</b> <%= movie.name %><br />
-			    			<b>Cast:</b> <%= movie.movie_cast %><br />
-			    			<b>Trailer:</b> <%= movie.movie_trailer_url %><br />
-						</div>
-						<% end %>
-					<% end %>
-				    <br />
-				 <% end %>
-				 <br /><br />
-				 </div>
-				 <% if @kid.family.parents.exists?(current_user) %>
-				 <div class="panel-footer">
-				 	<%= link_to 'Add Favorite Movie', new_kid_movie_path(@kid), :class => 'btn btn-primary' %>
-				 </div>
-				 <% end %>
-				
-			</div>
-		</div>
-	</div>
 </div>
-
 
 
 
 <!-- Modal -->
+			<div class="modal fade" id="kidMedicalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Medical</h4>
+			      </div>
+			      <div class="modal-body">
+			    	 Insurance Provider: <%= @kid.family.insuranceprovider %><br />
+					   Enrollee ID: <%= @kid.family.health_ins_enrollee_id %><br />
+					   Group #: <%= @kid.family.health_ins_group_num %><br />
+					   Physician Name: <%= @kid.family.physicianname %><br />
+					   Physician Phone: <%= @kid.family.physicianphone %><br />
+					   <br />  	
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			</div>
+
 			<div class="modal fade" id="myFavoriteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">Add a Favorite</h4>
+			        <h4 class="modal-title" id="myModalLabel">Add Favorite Activity</h4>
 			      </div>
 			      <div class="modal-body">
 			      
 				<%= simple_form_for @favorite, :url => kid_favorites_path(@kid) do |f| %>
-			
-				<%= f.input :category,  :as  =>:select, :collection => Favorite::CATEGORIES %>
+				<%= f.hidden_field :category, value: "activity" %>
 				<%= f.input :name %>
 				<%= f.input :description, :label => 'Details' %>
 				<br />

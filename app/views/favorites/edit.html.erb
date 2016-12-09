@@ -13,6 +13,7 @@
 							<% if !food.description.empty? %>
 			    				<b>Details:</b> <%= food.description %><br/>
 			    			<% end %><br /><br />
+			    			<%= link_to 'Remove', kid_favorite_path(@kid, food.id), :method => :delete %> <i class="fa fa-trash"></i>
 						<% end %>
 					<% end %>
 				    <br />

@@ -1,33 +1,35 @@
 class MoviesController < ApplicationController
   def new
-    @kid = Kid.find(params[:kid_id])
-    @movie = @kid.favorites.new
-    @favorite = Favorite.new
-    i = Imdb::Search.new(params[:title])
-    @movies = []
-    @moviesearch = []
-    if params[:title]
-      i.movies[0..5].each do |result|
-        mv = result
-        @moviesearch << mv
-        @movies << Favorite.new
-      end
-    end
-  end
 
-  def index
+
     @kid = Kid.find(params[:kid_id])
     @movie = @kid.favorites.new
-    i = Imdb::Search.new(params[:title])
+    @favorites = @kid.favorites.all
+    @favorite = Favorite.new
+
+    tmdb_api_key = ENV["TMDB_API_KEY"]
+
+    i = Tmdb::Api.key(tmdb_api_key)
+    
+    if params[:title]
+      i = Tmdb::Movie.search(params[:title])
+    end
+    # i = Tmdb::Find.search(params[:title])
+    #i = Tmdb::Movie.upcoming
+    @configuration = Tmdb::Configuration.new
+
     @movies = []
     @moviesearch = []
     if params[:title]
-      i.movies[0..5].each do |result|
+      i.each do |result|
         mv = result
-        @moviesearch << mv
-        @movies << Favorite.new
-      end
- end
+        if !mv.adult 
+          @moviesearch << mv
+          @movies << Favorite.new
+        end
+    end
+    end
+
   end
 
   def create
@@ -45,6 +47,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:favorite).permit(:type, :name, :description, :image_link, :book_isbn, :movie_cast, :movie_trailer_url, :category)
+    params.require(:favorite).permit(:type, :name, :description, :image_link, :book_isbn, :releasedate, :movie_cast, :movie_trailer_url, :category)
   end
 end

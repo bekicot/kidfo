@@ -14,7 +14,7 @@ class FavoritesController < ApplicationController
 
   def show
     @kid = Kid.find(params[:kid_id])
-    @favorite = Favorite.find(params[:favorite_id])
+    @favorites = @kid.favorites.all
   end
 
   def create
@@ -26,13 +26,14 @@ class FavoritesController < ApplicationController
 
   def destroy
     @kid = Kid.find(params[:kid_id])
-    @kid.favorite.destroy
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
     redirect_to kid_path(@kid)
   end
 
   private
 
   def favorite_params
-    params.require(:favorite).permit(:type, :name, :description, :image_link, :book_isbn, :movie_cast, :movie_trailer_url, :category)
+    params.require(:favorite).permit(:type, :name, :description, :image_link, :book_isbn, :movie_cast, :releasedate, :movie_trailer_url, :category)
   end
 end

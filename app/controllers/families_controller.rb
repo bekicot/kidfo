@@ -39,7 +39,7 @@ class FamiliesController < ApplicationController
   private
 
   def family_params
-    params.require(:family).permit [:name, :avatar, :physicianname, :physicianphone, :insuranceprovider, :health_ins_enrollee_id, :health_ins_group_num, :emerg_contact_1, :emerg_contact_1_phone, :emerg_contact_2, :emerg_contact_2_phone], kids_attributes: [:id, :name, :avatar, :birthdate, :gender, :bedtime, :sleeproutine, :allergies, :chores, :nonos, :_destroy]
+    params.require(:family).permit [:name, :avatar, :physicianname, :physicianphone, :insuranceprovider, :health_ins_enrollee_id, :health_ins_group_num, :emerg_contact_1, :emerg_contact_1_phone, :emerg_contact_2, :emerg_contact_2_phone], kids_attributes: [:id, :name, :avatar, :birthdate, :gender, :bedtime, :sleeproutine, :nap1, :nap2, :nap3, :naproutine, :allergies, :chores, :nonos, :_destroy]
     end
 
   def check_current_user_family

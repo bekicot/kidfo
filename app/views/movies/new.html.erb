@@ -13,25 +13,28 @@
 
 	<% @moviesearch.each_with_index do |result, index| %>
 
-	  <%= simple_form_for @favorite, :url => kid_movies_path(@kid) do |f| %>
-	   <% @formtype = 'movie' %>
-	   <%= image_tag result.poster %><br />
+	<%= simple_form_for @favorite, :url => kid_movies_path(@kid) do |f| %>
+		<%  @formtype = 'movie' %>
 
-	    Title: <%= result.title %><br />
-	    Cast: <%= result.cast_characters[0..5] %><br />
-	    Company: <%= result.company %><br />
-	    Rating: <%= result.mpaa_rating %><br />
-	    Trailer: <%=h auto_link(result.trailer_url) if result.trailer_url %><br /><br />
+		<% movieimage = @configuration.base_url.to_s + @configuration.backdrop_sizes.first.to_s + result.backdrop_path.to_s %>
+
+		<%= f.hidden_field :name, value: result.title %>
+	   	<%= f.hidden_field :description, value: result.overview[0...350] if result.overview %>
+	   	<%= f.hidden_field :image_link, value: movieimage %>
+	   	<%= f.hidden_field :releasedate, value: result.release_date %>
+	  	<%= f.hidden_field :category, value: @formtype %>	   
+	   
+	   <%= image_tag movieimage  %><br />
+
+	    <h4>Title: <%= result.title %></h4>
+	    <b>Released:</b> <%= result.release_date %><br />
+	    <b>Overview:</b> <%= result.overview %>
 	    <br /><br />
-	    
-	    <%= f.hidden_field :name, value: result.title %>
-	    <%= f.hidden_field :movie_cast[0..5], value: result.cast_characters[0..5] %>
-	    <%= f.hidden_field :movie_trailer_url, value: result.trailer_url %>
-	    <%= f.hidden_field :image_link, value: result.poster %>
- 		<%= f.hidden_field :category, value: @formtype %>
-	    <%= f.submit '+Favorite Movie', :class=> 'btn btn-primary' %><br /><br />
+	 <%= f.submit '+Favorite Movie', :class=> 'btn btn-primary' %><br /><br />
+	  
+		<% end %>
 	    <hr><br />
-	  <% end %>
+	 
 	<% end %>
 </div>
 <% end %>

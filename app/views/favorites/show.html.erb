@@ -2,10 +2,128 @@
 <!-- Favorites Section: Food, Drinks, Activities -->
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
-	<h2><%= @kid.name %>'s Favorite: Remove</h2><br/>
+	<h2><%= @kid.name %>'s Favorites: Remove</h2><br/>
 		<div class="col-xs-4">
-			<h4><%= favorite.name %></h4>
-			<%= link_to 'Delete Favorite', kid_favorite_path(@favorite), :method => :delete,  :class => 'btn btn-warning btn-sm' %>
+				  <h3>Favorite Foods</h3>
+				  <hr>
+				  <% if @favorites.any? %>
+				   <%	@favorites.each do |food| %>
+				   		<% if food.category == 'food' %>
+							<h4><%= food.name %></h4>
+							<% if !food.description.empty? %>
+			    				<b>Details:</b> <%= food.description %><br/>
+			    			<% end %><br /><br />
+			    			<%= link_to 'Remove', kid_favorite_path(@kid, food.id), :method => :delete %> <i class="fa fa-trash"></i>
+						<% end %>
+					<% end %>
+				    <br />
+				 <% end %>
+		</div>
+
+		<div class="col-xs-4">
+				  <h3>Favorite Drinks</h3>
+				  <hr>
+				  <% if @favorites.any? %>
+				   <%	@favorites.each do |drink| %>
+				   		<% if drink.category == 'drink' %>
+							<h4><%= drink.name %></h4>
+							<% if !drink.description.empty? %>
+			    				<b>Details:</b> <%= drink.description %>
+			    			<% end %><br /><br />
+						<% end %>
+					<% end %>
+				    <br />
+				 <% end %>
+		</div>
+
+		<div class="col-xs-4">
+		
+				  <h3>Favorite Activities</h3>
+				  <hr>
+				  <% if @favorites.any? %>
+				   <%	@favorites.each do |activity| %>
+				   		<% if activity.category == 'activity' %>
+							<h4><%= activity.name %></h4>
+							<% if !activity.description.empty? %>
+			    				<b>Details:</b> <%= activity.description %>
+			    			<% end %><br /><br />
+						<% end %>
+					<% end %>
+				    <br />
+				 <% end %>
+		</div>
+		<div class="clear"></div>
+		<% if @kid.family.parents.exists?(current_user) %>
+		<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myFavoriteModal">
+	        Add Favorite
+	     </button>
+	    <% end %>
+
+	</div>
+</div>
+<br /><br /><br />
+
+
+<!-- Favorites Section: Books and Movies -->
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Favorite Books</h3>
+				  </div>
+				  <div class="panel-body">
+				  <% if @favorites.any? %>
+				   <%	@favorites.each do |book, index| %>
+				   		<% if book.category == 'book' %>
+						<div class="col-xs-4 col-sm-4 hideOverflow">
+							<%= image_tag book.image_link, class: "img-responsive " if book.image_link.present? %><br /><br />
+							<b>Title:</b> <%= book.name %><br />
+			    			<b>Description:</b> <%= book.description %><br />
+						</div>
+						<% end %>
+					<% end %>
+				    <br />
+				 <% end %>
+				 <br /><br />
+				 </div>
+				<% if @kid.family.parents.exists?(current_user) %>
+				  <div class="panel-footer">
+				 	<%= link_to 'Add Favorite Book', new_kid_book_path(@kid), :class => 'btn btn-primary' %>
+				 </div>
+				<% end %>
+				
+			</div>
+		</div>
+
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Favorite Movies</h3>
+				  </div>
+				  <div class="panel-body">
+				  <% if @favorites.any? %>
+				   <%	@favorites.each do |movie, index| %>
+				   		<% if movie.category == 'movie' %>
+						<div class="col-xs-4 col-sm-4 hideOverflow">
+							<%= image_tag movie.image_link, class: "img-responsive " if movie.image_link.present? %><br /><br />
+							<b>Title:</b> <%= movie.name %><br />
+			    			<b>Cast:</b> <%= movie.movie_cast %><br />
+			    			<b>Trailer:</b> <%= movie.movie_trailer_url %><br />
+						</div>
+						<% end %>
+					<% end %>
+				    <br />
+				 <% end %>
+				 <br /><br />
+				 </div>
+				 <% if @kid.family.parents.exists?(current_user) %>
+				 <div class="panel-footer">
+				 	<%= link_to 'Add Favorite Movie', new_kid_movie_path(@kid), :class => 'btn btn-primary' %>
+				 </div>
+				 <% end %>
+				
+			</div>
 		</div>
 	</div>
 </div>

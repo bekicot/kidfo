@@ -2,35 +2,39 @@
 <div class="booyah-box special col-xs-10 col-xs-offset-1">
 	<div class="content">
 		<%= image_tag @family.avatar.family, class: "img-responsive booyah-box special" if @family.present? %>
-		<br /><br /><br /><br /><br /><br />
-		<div class="col xs-2 col-xs-offset-1">
-		<div class="img-responsive img-thumbnail profile">
-				<%= image_tag @user.avatar, class: "avatar" if @user.avatar.present? %>
-		 </div>		
-		 </div><br />
+		<br /><br /><br /><br /><br /><br /><br />
+		<div class="col-xs-2">
+		 	<div class="img-responsive img-thumbnail profile">
+				<%= image_tag @user.avatar, class: "img-responsive avatar" if @user.avatar.present? %>
+		    </div>	
 
-		<div class="col-xs-8">
-			<h2><%= @user.first_name %> <%= @user.last_name %></h2>
-			<h4><%= @user.email %></h4>
+		 </div>
+		<div class="row">
+		<div class="col-xs-10">
+			<h3>     <%= @user.first_name %> <%= @user.last_name %></h3>
 		</div>
+		<div class="col-xs-9">
 		   <% if @family.present? %>
 				<% if @family.may_invite_spouse? %>
 				   <%= link_to 'Invite Spouse/Partner',  new_invite_path(invite_kind: :for_spouse), :class => 'btn btn-primary btn-cons' %>
 	    		<% end %>
-	    		<%= link_to 'Invite Sitter',  new_invite_path(invite_kind: :for_sitter), :class => 'btn btn-primary btn-cons' %>
-	    		<%= link_to 'Edit Family Details/Photo',  edit_family_path(@family), :class => 'btn btn btn-primary btn-cons' %>
+	    		<%= link_to 'Invite Sitter',  new_invite_path(invite_kind: :for_sitter), :class => 'btn btn-primary btn-sm btn-cons' %>
+	    		<%= link_to 'Edit Family Details/Photo',  edit_family_path(@family), :class => 'btn btn btn-primary btn-sm btn-cons' %>
 		   <% end %>
+		 </div>
 		</div>
 	</div>
-
+</div>
 	<% if @user.parentuser? || @user.parentsitteruser? && @user.family == @family && @user.family.present? %>
-
-	<div class="col-xs-4 col-xs-offset-1">
+<!-- Section Kids --> 
+<div class="kids_section">
+	<div class="col-xs-10 col-xs-offset-1">
 		<h2 class="text-center">Kids</h2> <br /><br />
 	  		<% @family.kids.each do |kid| %>
-	  		<div class="col-xs-4 col-xs-offset-1 text-center">
-	  			<div class="img-responsive">
-					<%= image_tag kid.avatar.thumb, class: "img-circle circle-avatar kid" if kid.avatar.thumb.present? %>
+	  		<div class="col-xs-4">
+				<%= image_tag kid.avatar.thumb, class: "img-responsive circle-avatar img-circle kid" if kid.avatar.thumb.present? %>
+				<br />
+				<div class="caption">
 					<%= link_to kid.name, kid_path(kid) %><br />
 			 	</div><br />
 	  		</div>
@@ -38,23 +42,26 @@
 	  	<br /><br />
 	</div>
 	<% end %>
-
+</div>
+<!-- End Section Kids --> 
 	<% if @family.present? && @family.sits.present? %>
-	<div class="col-xs-4 col-xs-offset-1">
+	<div class="col-xs-10 col-xs-offset-1">
 		<h2 class="text-center">Sitters</h2>  <br /><br />
 	  		<% @family.sitters.each do |sitter| %>
-	  		<div class="col-xs-4 col-xs-offset-1 text-center">
+	  		<div class="col-xs-4 text-center">
 	  			<div class="img-responsive">
-	  				<%= image_tag sitter.avatar.thumb, class: "img-circle circle-avatar adult" if sitter.avatar.thumb.present? %>
+	  				<%= image_tag sitter.avatar.thumb, class: "img-responsive img-circle circle-avatar adult" if sitter.avatar.thumb.present? %>
 	  			</div><br />
+				<div class="caption">
 	  		 	<%= link_to sitter.first_name + " " + sitter.last_name, user_path(sitter) %><br />
 	  			</div>
+	  		</div>
 	  		<% end %>
 	  	<br /><br />
-		</div>
+	</div>
 <% end %>
 
-	<% if @user.sitteruser? || @user.parentsitteruser? && @user.families.present? %>
+	<% if (@user.sitteruser? || @user.parentsitteruser?) && @user.families.present?  %>
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
 		<h2 class="text-center">Families I Sit For</h2>  <br /><br />
@@ -62,9 +69,9 @@
 	  		<div class="col-xs-6">
 	  		 	<div class="panel panel-default">
 	    			<div class="panel-head-custom panel-heading">
-	  				<%= image_tag family.avatar, class: "img-responsive special figure-img" if family.avatar.present? %>
+	  				<%= image_tag family.avatar, class: "img-responsive special" if family.avatar.present? %>
 	  				</div><br />
-	  		 	<h4 class="figure-caption"><%= link_to family.name, family_path(family) %></h4><br />
+	  		 	<h4 class="text-center"><%= link_to "The " + family.name, family_path(family) %></h4>
 	  			</div>
 	  		</div>
 	  		<% end %>
