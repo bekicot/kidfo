@@ -28,7 +28,16 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: :show
-  resources :sits
+  resources :sits do
+    resources :sitrequests do
+      member do
+        post :accept, to: 'sitrequests#accept', as: :accept
+        post :cancel, to: 'sitrequests#cancel', as: :cancel
+        post :reject, to: 'sitrequests#reject', as: :reject
+      end
+    end
+  end
+  
 
   resources :families
   resources :kids do

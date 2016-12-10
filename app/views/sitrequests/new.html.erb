@@ -1,0 +1,14 @@
+<div class="booyah-box col-xs-4 col-xs-offset-4">
+	Sit Request
+
+	<%= @sit.sit_start %>
+	<%= @sit.sit_details %>
+	
+	<%= simple_form_for [@sit, @sitrequest] do |f| %>
+		<%= f.hidden_field :sit_id, value:  @sit %>
+		<%= f.input :email, :hint => 'Email'  %>
+		
+		<%= f.submit 'Send Invite', :class=>"btn btn-primary" %>
+
+	<% end %>
+</div>

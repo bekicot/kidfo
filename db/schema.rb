@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209050144) do
+ActiveRecord::Schema.define(version: 20161209054618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,22 @@ ActiveRecord::Schema.define(version: 20161209050144) do
 
   add_index "parenthoods", ["family_id"], name: "index_parenthoods_on_family_id", using: :btree
   add_index "parenthoods", ["user_id"], name: "index_parenthoods_on_user_id", using: :btree
+
+  create_table "sitrequests", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "status"
+    t.string   "code"
+    t.integer  "sit_id"
+    t.integer  "user_id"
+    t.integer  "invite_kind"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "sitrequests", ["code"], name: "index_sitrequests_on_code", using: :btree
+  add_index "sitrequests", ["sit_id"], name: "index_sitrequests_on_sit_id", using: :btree
+  add_index "sitrequests", ["status"], name: "index_sitrequests_on_status", using: :btree
+  add_index "sitrequests", ["user_id"], name: "index_sitrequests_on_user_id", using: :btree
 
   create_table "sits", force: :cascade do |t|
     t.integer  "sitter_id"
