@@ -47,7 +47,8 @@
 			<h2 class="text-center">Upcoming Sits</h2> <br /><br />
 		  		<% @family.sits.each do |sit| %>
 		  		<div class="col-xs-4">
-		  			<%= sit.sit_start %><br />
+		  			From: <%= sit.sit_start %><br />
+		  			To: <%= sit.sit_end %><br />
 		  			<%= sit.sit_details %><br />
 		  		</div>
 		  		<% end %>

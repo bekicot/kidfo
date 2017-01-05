@@ -37,8 +37,7 @@ gem 'googlebooks'
 gem 'rails_autolink'
 # Search
 gem 'ransack'
-# Rich Text
-gem 'bootsy'
+
 
 gem 'rails_12factor', group: :productiongit
 gem 'activeadmin', github: 'activeadmin'
