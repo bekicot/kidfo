@@ -160,23 +160,6 @@ ActiveRecord::Schema.define(version: 20161209054618) do
   add_index "sits", ["family_id"], name: "index_sits_on_family_id", using: :btree
   add_index "sits", ["sitter_id"], name: "index_sits_on_sitter_id", using: :btree
 
-  create_table "sittings", force: :cascade do |t|
-    t.integer  "sitter_id"
-    t.integer  "family_id"
-    t.boolean  "paid"
-    t.integer  "rate"
-    t.integer  "status"
-    t.text     "sitting_details"
-    t.date     "sitting_date"
-    t.string   "start_time"
-    t.string   "end_time"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "sittings", ["family_id"], name: "index_sittings_on_family_id", using: :btree
-  add_index "sittings", ["sitter_id"], name: "index_sittings_on_sitter_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.integer  "role"
     t.string   "name"

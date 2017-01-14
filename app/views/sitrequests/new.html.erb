@@ -6,6 +6,7 @@
 	
 	<%= simple_form_for [@sit, @sitrequest] do |f| %>
 		<%= f.hidden_field :sit_id, value:  @sit %>
+		<%= f.hidden_field :invite_kind %>
 		<%= f.input :email, :hint => 'Email'  %>
 		
 		<%= f.submit 'Send Invite', :class=>"btn btn-primary" %>

@@ -14,6 +14,5 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require bootsy
 //= require bootstrap-wysihtml5
 //= require_tree .

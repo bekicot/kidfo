@@ -33,7 +33,7 @@ class Sitrequest < ActiveRecord::Base
 
   belongs_to :sit
 
-  validates :email, :invite_kind, presence: true
+  validates :email, :invite_kind, presence: true 
 
   before_create { self.code = SecureRandom.hex(32) }
   after_create { SitRequestMailer.send_sitrequest(self).deliver_later }

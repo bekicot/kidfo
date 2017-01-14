@@ -53,8 +53,6 @@ gem 'rmagick'
 # Use Unicorn as the app server
 gem 'themoviedb'
 
-
-
 # gem 'unicorn'
 
 # Use Capistrano for deployment

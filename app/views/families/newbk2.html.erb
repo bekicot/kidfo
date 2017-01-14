@@ -1,0 +1,39 @@
+  <div class="booyah-box col-xs-10 col-xs-offset-1">
+  <h1>Add Kid</h1>
+  <%= simple_form for @family do |fam| %>
+  	  <%= fam.hidden_field :name, value: current_user.last_name %>
+	  <%= simple_fields_for @kid do |f|  %>
+	  	 <div class= "row">
+		  	<div class="col-xs-4">
+				<h2>General Info</h2>
+				 	<%= f.input :name %>
+					<%= f.input :birthdate, :label => 'Birth Date' %>
+					<%= f.input :gender, :as =>:select, :collection => Kid::GENDER %><br />
+					<strong>Profile Photo Upload</strong><br/>				
+					<%= f.file_field :avatar %>
+			</div>
+			
+	    </div>
+	    <hr>
+	    <div class= "row">
+			<div class="col-xs-4">
+				<h3>Sleep</h3><br />
+					<%= f.input :bedtime, :as => :time, :minute_step => 15 , default: Time.parse("7:30")%>
+					<%= f.input :sleeproutine, :label => 'Sleep Routine',:input_html => { :cols => 5, :rows => 7 }   %><br />
+				<h3>Naptimes</h3><br />
+				<small>All Optional</small>
+					Nap 1:<%= f.input :nap1, :as => :time, :minute_step => 15 , default: Time.parse("9:30")%>Nap 2:<%= f.input :nap2, :as => :time, :minute_step => 15 , default: Time.parse("12:30")%><%= f.input :nap3, :as => :time, :minute_step => 15 , default: Time.parse("3:30")%>
+					<%= f.input :naproutine, :label => 'Naptime Routine',:input_html => { :cols => 5, :rows => 7 }   %>
+			</div>
+			<div class="col-xs-4">
+				<h3>No-Nos</h3><br />
+				<%= f.input :allergies %>
+				<%= f.input :nonos, :label => 'Please Avoid', :input_html => { :cols => 5, :rows => 7 }   %><br />
+			</div>
+			
+		</div>
+			<%= f.submit 'Add Kid', :class=>"btn btn-primary" %>
+		<% end %>
+	</div> 
+<% end %>
+

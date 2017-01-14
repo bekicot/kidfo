@@ -13,7 +13,8 @@ class FamiliesController < ApplicationController
     @family = Family.new family_params
     parenthood = Parenthood.new family: @family, user: current_user
     if @family.save && parenthood.save
-
+      current_user.role = 1
+      redirect_to root_path
     else
         render :new, status: :unprocessable_entity
     end

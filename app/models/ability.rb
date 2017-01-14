@@ -20,5 +20,6 @@ class Ability
       invite.family == user.family
     end
     can :create, Invite if user.parentuser? || user.parentsitteruser?
+    can :create, Sitrequest
   end
 end

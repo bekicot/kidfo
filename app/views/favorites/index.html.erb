@@ -3,46 +3,13 @@
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
 	<h2><%= @kid.name %>'s Favorites: Remove</h2><br/>
-		<div class="col-xs-4">
-				  <h3>Favorite Foods</h3>
-				  <hr>
-				  <% if @favorites.any? %>
-				   <%	@favorites.each do |food| %>
-				   		<% if food.category == 'food' %>
-							<h4><%= food.name %></h4>
-							<% if !food.description.empty? %>
-			    				<b>Details:</b> <%= food.description %><br/>
-			    			<% end %><br /><br />
-			    			<%= link_to 'Remove', kid_favorite_path(@kid, food.id), :method => :delete %> <i class="fa fa-trash"></i>
-						<% end %>
-					<% end %>
-				    <br />
-				 <% end %>
-		</div>
-
-		<div class="col-xs-4">
-				  <h3>Favorite Drinks</h3>
-				  <hr>
-				  <% if @favorites.any? %>
-				   <%	@favorites.each do |drink| %>
-				   		<% if drink.category == 'drink' %>
-							<h4><%= drink.name %></h4>
-							<% if !drink.description.empty? %>
-			    				<b>Details:</b> <%= drink.description %>
-			    			<% end %><br /><br />
-			    			<%= link_to 'Remove', kid_favorite_path(@kid, drink.id), :method => :delete %> <i class="fa fa-trash"></i>
-						<% end %>
-					<% end %>
-				    <br />
-				 <% end %>
-		</div>
-
-		<div class="col-xs-4">
+		<div class="col-xs-12">
 		
 				  <h3>Favorite Activities</h3>
 				  <hr>
 				  <% if @favorites.any? %>
 				   <%	@favorites.each do |activity| %>
+				   	<div class="col-xs-4">
 				   		<% if activity.category == 'activity' %>
 							<h4><%= activity.name %></h4>
 							<% if !activity.description.empty? %>
@@ -50,6 +17,7 @@
 			    			<% end %><br /><br />
 			    			<%= link_to 'Remove', kid_favorite_path(@kid, activity.id), :method => :delete %> <i class="fa fa-trash"></i>
 						<% end %>
+					</div>
 					<% end %>
 				    <br />
 				 <% end %>

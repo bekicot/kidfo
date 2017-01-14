@@ -1,12 +1,12 @@
 class SitrequestsController < ApplicationController
   before_action :authenticate_user!
-  #before_action :set_invite, only: [:show, :accept, :reject, :cancel]
-  #load_and_authorize_resource param_method: :invite_params
+  load_and_authorize_resource param_method: :sitrequest_params
 
   def new
     @sit = Sit.find(params[:sit_id])
     @sitrequest = @sit.sitrequests.new
     @sitrequest.invite_kind = 'for_sitter'
+
   end
 
   def create
@@ -14,14 +14,12 @@ class SitrequestsController < ApplicationController
     @sitrequest = @sit.sitrequests.new sitrequest_params
     @sitrequest.status = :pending
 
-    @sit.sitrequests.create(sitrequest_params.merge(sit_id: @sit.id))
-    #@invite = current_user.invites.new invite_params
-
     if @sitrequest.save
       redirect_to user_path(current_user), notice: "Sit request is sent to #{@sitrequest.email}"
     else
       render :new
     end
+
   end
 
   def show
