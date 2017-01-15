@@ -38,6 +38,17 @@ gem 'rails_autolink'
 # Search
 gem 'ransack'
 
+# API
+gem 'grape'
+gem 'grape_on_rails_routes'
+gem 'rack-cors', :require => 'rack/cors'
+
+# Disable security feature on model rails on rails 4. (strong parameters).
+gem 'hashie-forbidden_attributes'
+
+# Oauth
+gem 'doorkeeper'
+gem 'doorkeeper-jwt'
 
 gem 'rails_12factor', group: :productiongit
 gem 'activeadmin', github: 'activeadmin'

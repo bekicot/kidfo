@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  
+
+  # Doorkeeper required endpoint (For authentication, creating api key, etc)
+  use_doorkeeper
+
+  # API, Mounting Grape
+  mount Api => '/api'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   # The priority is based upon order of creation: first created -> highest priority.
