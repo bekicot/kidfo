@@ -52,6 +52,7 @@ class Kidfoo::V1::User < Grape::API
     user = User.find_by(email: params[:email])
     error('invalid email!') unless user
     application = Doorkeeper::Application.find_by(uid: params[:application_id])
+    error('invalid application_id') unless application
     if user.valid_password?(params[:password])
       response = { status: 'success' }
       token = Doorkeeper::AccessToken.create(application: application, resource_owner_id: user.id).token
