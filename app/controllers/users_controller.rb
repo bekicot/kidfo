@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @family = @user.family
+    @family = @user.family || Family.new
     @families = @user.families
   end
 end

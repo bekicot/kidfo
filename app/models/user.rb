@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   # for Sitter only
   has_many :familysitters, foreign_key: :sitter_id
   has_many :families, through: :familysitters, source: :family
+  has_many :kids, through: :families
+
+  # Access Token
+  has_many :access_token, class_name: 'Doorkeeper::AccessToken', foreign_key: :resource_owner_id
 
   enum role: {
     # Person with Kids, Family, But Does not Sit for Others

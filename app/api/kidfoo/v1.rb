@@ -9,16 +9,16 @@ class Kidfoo::V1 < Api
 
   helpers do
     def current_user
-      User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
+      ::User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
     end
 
     def public_endpoint?
-      public_endpoint.include? request.url
+      public_endpoint.include? "#{request.request_method} #{request.path}"
     end
 
     def public_endpoint
       [
-        'POST /api/v1/user',
+        'POST /api/v1/user/sign_in',
         'POST /api/v1/user'
       ]
     end
