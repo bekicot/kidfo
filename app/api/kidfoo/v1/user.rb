@@ -1,7 +1,7 @@
 class Kidfoo::V1::User < Grape::API
 
   rescue_from ActiveRecord::RecordNotFound do |e|
-    error!({ message: "User can\'t be found!" }, 400)
+    error!({ status: 'fail', data: "User can\'t be found!" }, 400)
   end
 
   helpers do
@@ -15,6 +15,23 @@ class Kidfoo::V1::User < Grape::API
 
   get do
     success(current_user)
+  end
+
+  # put do
+  # end
+
+  params do
+    requires :email, :password, :password_confirmation, :first_name
+    optional :phone_number
+  end
+  post do
+    user = User.new(declared(params, include_missing: false))
+    user.role = 'parentuser'
+    if(user.save)
+      success(user)
+    else
+      error(user.errors.full_messages)
+    end
   end
 
   get 'families' do
@@ -45,17 +62,17 @@ class Kidfoo::V1::User < Grape::API
   end
 
   params do
-    requires :email, :password, :application_id
+    requires :email, :password
+    optional :application_name
   end
 
   post 'sign_in' do
     user = User.find_by(email: params[:email])
     error('invalid email!') unless user
-    application = Doorkeeper::Application.find_by(uid: params[:application_id])
-    error('invalid application_id') unless application
+    application = Doorkeeper::Application.find_by(name: params[:application_name] || 'default')
     if user.valid_password?(params[:password])
       response = { status: 'success' }
-      token = Doorkeeper::AccessToken.create(application: application, resource_owner_id: user.id).token
+      token = user.token
       response.merge!( data: user.serializable_hash.merge(access_token: token) )
       return response
     else

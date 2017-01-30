@@ -3,6 +3,10 @@ class Kidfoo::V1 < Api
   format :json
   helpers Doorkeeper::Grape::Helpers
 
+  rescue_from Grape::Exceptions::ValidationErrors do |e|
+    error!({ status: 'fail', data: e.full_messages.join(', ')}, 400)
+  end
+
   before do
     doorkeeper_authorize! unless public_endpoint?
   end

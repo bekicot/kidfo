@@ -42,7 +42,7 @@ Doorkeeper.configure do
       {
         user: {
           email: user.email,
-          application: opts[:application].uid
+          application: opts[:application].name
         }
       }
     end
@@ -99,7 +99,7 @@ Doorkeeper.configure do
   # The value can be any string. Use nil to disable this feature. When disabled, clients must provide a valid URL
   # (Similar behaviour: https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi)
   #
-  # native_redirect_uri 'urn:ietf:wg:oauth:2.0:oob'
+  native_redirect_uri 'urn:ietf:wg:oauth:2.0:oob'
 
   # Forces the usage of the HTTPS protocol in non-native redirect uris (enabled
   # by default in non-development environments). OAuth2 delegates security in
@@ -135,3 +135,12 @@ Doorkeeper.configure do
   # WWW-Authenticate Realm (default "Doorkeeper").
   # realm "Doorkeeper"
 end
+
+module ApplicationExtension
+  extend ActiveSupport::Concern
+  included do
+    validates :name, uniqueness: true
+  end
+end
+Doorkeeper::Application.send :include, ApplicationExtension
+Doorkeeper::DefaultApplication = Doorkeeper::Application.where(name: 'default', redirect_uri: 'urn:ietf:wg:oauth:2.0:oob').first_or_create
