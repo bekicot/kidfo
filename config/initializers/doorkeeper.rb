@@ -143,4 +143,3 @@ module ApplicationExtension
   end
 end
 Doorkeeper::Application.send :include, ApplicationExtension
-Doorkeeper::DefaultApplication = Doorkeeper::Application.where(name: 'default', redirect_uri: 'urn:ietf:wg:oauth:2.0:oob').first_or_create

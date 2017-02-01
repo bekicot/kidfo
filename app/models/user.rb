@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   attr_reader :token
 
+  validates :first_name, presence: true
+
   # for parents
   has_one :parenthood
   has_one :family, through: :parenthood
@@ -33,12 +35,17 @@ class User < ActiveRecord::Base
 
   validates :role, presence: true
 
-  def token(application = Doorkeeper::DefaultApplication)
+  def token(application=nil)
+    application = Doorkeeper::Application.where(name: 'default', redirect_uri: 'urn:ietf:wg:oauth:2.0:oob').first_or_create unless application
     Doorkeeper::AccessToken.create(application: application, resource_owner_id: id).token
   end
 
   def as_json(options=nil)
     options = options || {}
-    super(options.merge(methods: [:token]))
+    super(options.merge(methods: [:token, :name]))
+  end
+
+  def name
+    super || first_name.to_s + ' ' + last_name.to_s
   end
 end
