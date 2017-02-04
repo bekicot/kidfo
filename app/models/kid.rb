@@ -1,5 +1,6 @@
 class Kid < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
+  include AvatarUrlable
 
   belongs_to :family
   has_many :favorites
@@ -12,4 +13,9 @@ class Kid < ActiveRecord::Base
   }.freeze
 
   validates :name, presence: true
+
+  def as_json(options={})
+    super(options.merge(methods: [:avatar_url], except: :avatar))
+  end
+
 end

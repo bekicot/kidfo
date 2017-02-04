@@ -72,8 +72,7 @@ class Kidfoo::V1::User < Grape::API
     application = Doorkeeper::Application.find_by(name: params[:application_name] || 'default')
     if user.valid_password?(params[:password])
       response = { status: 'success' }
-      token = user.token
-      response.merge!( data: user.serializable_hash.merge(access_token: token) )
+      response.merge!( data: user.as_json )
       return response
     else
       error!({ status: 'fail', data: { password: 'Password is invalid!' } }, 400)
