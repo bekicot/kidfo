@@ -8,9 +8,17 @@
 
 matt = User.create!(email: 'matt@kidfo.com', password: '123123', password_confirmation: '123123', role: 'parentuser', first_name: 'Matt', last_name: 'Awesome')
 matt.avatar = File.open(Rails.root.join('db', 'lego_samurai_by_anggasatriohadi-d388jqr.jpg'))
-family = Family.create!(id: '1', name: 'Eves: Boulder, CO', emerg_contact_1: 'Pam Eves', emerg_contact_1_phone: '(760)207-1551', emerg_contact_2: 'Sue Peterson', emerg_contact_2_phone: 'BCBSM', insuranceprovider: 'BCBSM', physicianname: 'Bucknam Robert C MD', physicianphone: '(303)673-9030' )
-family.kids << Kid.create!(name: 'Bryar Louise', gender: 'Female', allergies: 'Peanuts', family_id: '1', nonos: 'Nada', avatar: File.open(Rails.root.join('db', 'lego_samurai_by_anggasatriohadi-d388jqr.jpg')))
+family = Family.create!(name: 'Eves: Boulder, CO', emerg_contact_1: 'Pam Eves', emerg_contact_1_phone: '(760)207-1551', emerg_contact_2: 'Sue Peterson', emerg_contact_2_phone: 'BCBSM', insuranceprovider: 'BCBSM', physicianname: 'Bucknam Robert C MD', physicianphone: '(303)673-9030', avatar: File.open(Rails.root.join('db', 'lego_samurai_by_anggasatriohadi-d388jqr.jpg') ))
 
+family_1 = Family.create!(name: 'Eves: Boulder, CO', emerg_contact_1: 'Pam Eves', emerg_contact_1_phone: '(760)207-1551', emerg_contact_2: 'Sue Peterson', emerg_contact_2_phone: 'BCBSM', insuranceprovider: 'BCBSM', physicianname: 'Bucknam Robert C MD', physicianphone: '(303)673-9030', avatar: File.open(Rails.root.join('db', 'lego_samurai_by_anggasatriohadi-d388jqr.jpg') ))
+family_2 = Family.create!(name: 'Eves: Boulder, CO', emerg_contact_1: 'Pam Eves', emerg_contact_1_phone: '(760)207-1551', emerg_contact_2: 'Sue Peterson', emerg_contact_2_phone: 'BCBSM', insuranceprovider: 'BCBSM', physicianname: 'Bucknam Robert C MD', physicianphone: '(303)673-9030', avatar: File.open(Rails.root.join('db', 'lego_samurai_by_anggasatriohadi-d388jqr.jpg') ))
+family_3 = Family.create!(name: 'Eves: Boulder, CO', emerg_contact_1: 'Pam Eves', emerg_contact_1_phone: '(760)207-1551', emerg_contact_2: 'Sue Peterson', emerg_contact_2_phone: 'BCBSM', insuranceprovider: 'BCBSM', physicianname: 'Bucknam Robert C MD', physicianphone: '(303)673-9030', avatar: File.open(Rails.root.join('db', 'lego_samurai_by_anggasatriohadi-d388jqr.jpg') ))
+
+family.kids << Kid.create!(name: 'Bryar Louise', gender: 'Female', allergies: 'Peanuts', nonos: 'Nada', avatar: File.open(Rails.root.join('db', 'lego_samurai_by_anggasatriohadi-d388jqr.jpg')))
+
+matt.families << family_1
+matt.families << family_2
+matt.families << family_3
 matt.family = family
 matt.save
 

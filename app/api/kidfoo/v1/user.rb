@@ -38,6 +38,10 @@ class Kidfoo::V1::User < Grape::API
     success(current_user.families)
   end
 
+  get 'family' do
+    success(current_user.family)
+  end
+
   get 'kids' do
     success(current_user.kids)
   end

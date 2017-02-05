@@ -1,5 +1,6 @@
 class Family < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
+  include AvatarUrlable
 
   has_many :parenthoods
   has_many :users, through: :parenthoods
@@ -19,5 +20,9 @@ class Family < ActiveRecord::Base
 
   def may_invite_spouse?
     parents.count < 2
+  end
+
+  def as_json(options={})
+    super(options.merge(methods: [:avatar_url], exclude: :avatar))
   end
 end
